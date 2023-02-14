@@ -1270,3 +1270,37 @@ div[id^="invalid"]{
   font-size: 13px;
   color: #012970;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#emailInvalid
+{
+  color: red;
+}
+#fnameInvalid
+{
+  color: red;
+}
+#lnameInvalid
+{
+  color: red;
+}
+#DOBInvalid
+{
+  color: red;
+}
+#enameInvalid
+{
+  color: red;
+}
+#subBut
+{
+  color: red;
+}
+#phoneInvalid
+{
+  color: red;
+}
