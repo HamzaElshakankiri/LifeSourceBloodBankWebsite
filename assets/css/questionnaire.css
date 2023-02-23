@@ -1,17 +1,17 @@
 body{
   font-size: 20px;
-  font-family: monospace;
-  background-color: #d2ffff;
+  background-color: whitesmoke;
 }
 
 #container{
-  margin : 20px auto;
+  margin : 400px auto;
   background-color: white;
   height: 400px;
   width : 900px;
   border-radius: 5px;
   box-shadow: 0px 5px 15px 0px;
   position: relative;
+ 
 }
 #start{
   font-size: 1.5em;
@@ -23,8 +23,7 @@ body{
   text-align: center;
   cursor: pointer;
   position: absolute;
-  left:300px;
-  top:50px;
+  margin: 125px 390px;
   color : lightgrey;
 }
 #start:hover{
@@ -147,3 +146,26 @@ body{
   font-weight: bold;
   text-align: center;
 }
+.red {
+  order: solid 1px #720000;
+  background-color: #c72a2a;
+  background: -moz-linear-gradient(top, #c72a2a 0%, #9e0e0e 100%);
+  background: -webkit-linear-gradient(top, #c72a2a 0%, #9e0e0e 100%);
+  background: -o-linear-gradient(top, #c72a2a 0%, #9e0e0e 100%);
+  background: -ms-linear-gradient(top, #c72a2a 0%, #9e0e0e 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9e0e0e', endColorstr='#9e0e0e', GradientType=0);
+  background: linear-gradient(top, #c72a2a 0%, #9e0e0e 100%);
+  -webkit-box-shadow: 0px 0px 1px #FF3300, inset 0px 0px 1px #FFFFFF;
+  -moz-box-shadow: 0px 0px 1px #FF3300, inset 0px 0px 1px #FFFFFF;
+  box-shadow: 0px 0px 1px #FF3300, inset 0px 0px 1px #FFFFFF;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bosld;
+  color: #FFFFFF;
+  padding: 10px 75px;
+  margin: 0 20px;
+  text-shadow: 2px 2px 1px #595959;
+  filter: dropshadow(color=#595959, offx=1, offy=1);
+  text-decoration: none;
+}
+  

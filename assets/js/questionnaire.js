@@ -12,7 +12,6 @@ let questions = [
         choiceA : "Yes ",
         choiceB : "No",
         correct : "A"
-
     },{
         question : "Within the past 3 months, have you gotten a Piercing or Tattoo?",
         choiceA : "Yes",
@@ -67,8 +66,7 @@ function checkAnswer(answer){
     }else{
         // answer is wrong
         // change progress color to red
-        alert("You should wait to donate")
-        location.reload()
+        location.assign('questionnairefail.html');
       
     }
     count = 0;
