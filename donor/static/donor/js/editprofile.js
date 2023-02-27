@@ -3,13 +3,17 @@ var hasSpecial = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
 
 function ValidateEmail(input) {
 
-    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var validRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   
     if (input.value.match(validRegex)) {
   
         document.getElementById("emailInvalid").innerHTML="";
         document.getElementById("subBut").innerHTML="";
-        document.querySelector('#submitB').disabled = false;
+
+        if(isGood())
+        {
+            document.querySelector('#submitB').disabled = false;
+        }
 
     } else {
   
@@ -35,7 +39,10 @@ function ValidatefirstName(input) {
     } else {
   
        document.getElementById("fnameInvalid").innerHTML="";
-       document.querySelector('#submitB').disabled = false;
+       if(isGood())
+        {
+            document.querySelector('#submitB').disabled = false;
+        }
       return true;
   
     }
@@ -54,7 +61,10 @@ function ValidatelastName(input) {
     } else {
   
        document.getElementById("lnameInvalid").innerHTML="";
-       document.querySelector('#submitB').disabled = false;
+       if(isGood())
+        {
+            document.querySelector('#submitB').disabled = false;
+        }
       return true;
   
     }
@@ -96,7 +106,10 @@ function ValidateEmergName(input) {
     } else {
   
        document.getElementById("enameInvalid").innerHTML="";
-       document.querySelector('#submitB').disabled = false;
+       if(isGood())
+        {
+            document.querySelector('#submitB').disabled = false;
+        }
   
       return true;
   
@@ -110,14 +123,20 @@ function ValidatePhone(input) {
     {
         document.getElementById("phoneInvalid").innerHTML="";
         document.getElementById("subBut").innerHTML="";
-        document.querySelector('#submitB').disabled = false;
+        if(isGood())
+        {
+            document.querySelector('#submitB').disabled = false;
+        }
         return true;
     }
     else if (input.value.match(phoneRegex) ) {
   
         document.getElementById("phoneInvalid").innerHTML="";
         document.getElementById("subBut").innerHTML="";
-        document.querySelector('#submitB').disabled = false;
+        if(isGood())
+        {
+            document.querySelector('#submitB').disabled = false;
+        }
 
         return true;
   
@@ -127,8 +146,24 @@ function ValidatePhone(input) {
        document.getElementById("subBut").innerHTML="New info cannot be saved while invalid inputs!";
        document.querySelector('#submitB').disabled = true;
   
-      return true;
+      return false;
   
     }
   
+}
+
+function isGood()
+{
+   
+    if(ValidateEmail() & ValidatefirstName() & ValidatelastName() & ValidateDOB() & ValidatePhone())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+
+
 }
