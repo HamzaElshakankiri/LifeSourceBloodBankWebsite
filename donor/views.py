@@ -5,7 +5,7 @@ def donation_history_view(request):
         return render(request,'donor/Donationhistory.html')
 
 
-def login(request):
+def donor_login_view(request):
         return render(request, 'donor/pages-login.html')
 
 

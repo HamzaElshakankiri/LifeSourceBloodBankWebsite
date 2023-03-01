@@ -27,7 +27,33 @@ let questions = [
         choiceA : "Yes",
         choiceB : "No",
         correct : "B"
+      },{
+        question : "Within the past 72 hours, have you had any dental surgery including a tooth pulling? ",
+        choiceA : "Yes",
+        choiceB : "No",
+        correct : "B"
+      },{
+        question : "Have you, for any reason, have a blood transfusion within the past 6 months?",
+        choiceA : "Yes",
+        choiceB : "No",
+        correct : "B"
+      },{
+        question : "Other than Aspirin, Tylenol, Advil, oral birth control(or generic counterparts), have you taken any other medications recently, or regularly? MORE DETAILS: LINK",
+        choiceA : "Yes",
+        choiceB : "No",
+        correct : "B"
+      },{
+        question : "We currently do not accept users who use illegal drugs, have you ever used an illegal drug(excluding cannabis)",
+        choiceA : "Yes",
+        choiceB : "No",
+        correct : "B"
+      },{
+        question : "If this is your first donation, more sensitive medical questions will be asked in your pre-donation interview. Do you swear that your answers given are 100% truthful?",
+        choiceA : "Yes",
+        choiceB : "No",
+        correct : "B"
       }
+      
 ];
 
 // create some variables

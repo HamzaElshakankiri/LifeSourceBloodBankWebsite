@@ -10,7 +10,7 @@ function ValidateEmail(input) {
         document.getElementById("emailInvalid").innerHTML="";
         document.getElementById("subBut").innerHTML="";
 
-        if(isGood())
+        if(isValidForm())
         {
             document.querySelector('#submitB').disabled = false;
         }
@@ -39,7 +39,7 @@ function ValidatefirstName(input) {
     } else {
   
        document.getElementById("fnameInvalid").innerHTML="";
-       if(isGood())
+       if(isValidForm())
         {
             document.querySelector('#submitB').disabled = false;
         }
@@ -61,32 +61,27 @@ function ValidatelastName(input) {
     } else {
   
        document.getElementById("lnameInvalid").innerHTML="";
-       if(isGood())
+       if(isValidForm())
         {
             document.querySelector('#submitB').disabled = false;
         }
       return true;
-  
     }
 
 } // working
 function ValidateDOB(input) {
   
     if (input.value.length === 0) {
-  
         document.getElementById("DOBInvalid").innerHTML="Please a valid Date of Birth";
-        
         return false;
 
     } else {
-  
-       document.getElementById("DOBInvalid").innerHTML="";
+        document.getElementById("DOBInvalid").innerHTML="";
   
       return true;
-  
     }
-
 }
+
 function ValidateEmergName(input) {
   
     if(input.value.length === 0)
@@ -102,59 +97,52 @@ function ValidateEmergName(input) {
         document.querySelector('#submitB').disabled = true;
 
         return false;
-  
     } else {
   
        document.getElementById("enameInvalid").innerHTML="";
-       if(isGood())
+       if(isValidForm())
         {
             document.querySelector('#submitB').disabled = false;
         }
   
       return true;
-  
     }
   
 } //working
 function ValidatePhone(input) {
   
     var phoneRegex = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+
     if(input.value.length === 0)
     {
         document.getElementById("phoneInvalid").innerHTML="";
         document.getElementById("subBut").innerHTML="";
-        if(isGood())
+        if(isValidForm())
         {
             document.querySelector('#submitB').disabled = false;
         }
         return true;
     }
     else if (input.value.match(phoneRegex) ) {
-  
         document.getElementById("phoneInvalid").innerHTML="";
         document.getElementById("subBut").innerHTML="";
-        if(isGood())
+        if(isValidForm())
         {
             document.querySelector('#submitB').disabled = false;
         }
 
         return true;
-  
     } else {
-  
        document.getElementById("phoneInvalid").innerHTML="An Emergency Phone Number must be valid if used";
        document.getElementById("subBut").innerHTML="New info cannot be saved while invalid inputs!";
        document.querySelector('#submitB').disabled = true;
   
       return false;
-  
     }
-  
 }
 
-function isGood()
+function isValidForm()
 {
-   
     if(ValidateEmail() & ValidatefirstName() & ValidatelastName() & ValidateDOB() & ValidatePhone())
     {
         return true;
@@ -163,7 +151,4 @@ function isGood()
     {
         return false;
     }
-
-
-
 }

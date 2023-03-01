@@ -3,8 +3,8 @@ from django.urls import path
 from django.contrib.auth.views import LoginView
 from . import views
 urlpatterns = [
-    path('donorlogin/', LoginView.as_view(template_name='donor/donorlogin.html'),name='donorlogin'),
-   
+    path('donorlogin/', views.donor_login_view,name='pages-login'),
+    
     path('donorsignup/', views.donor_signup_view,name='pages-register'),
   
    # path('donor-dashboard/', views.donor_dashboard_view,name='donor-dashboard'),
