@@ -118,6 +118,26 @@
     <aside id="sidebar" class="sidebar">
       <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
+          <a class="nav-link" href="{% url 'admin_dashboard' %}  ">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'admin_donation' %}">
+            <i class="bi bi-grid"></i>
+            <span>Donation History</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'admin_blood'%}">
+            <i class="bi bi-grid"></i>
+            <span>Blood Stock</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{% url 'admin_create_appt' %}">
             <i class="bi bi-grid"></i>
             <span>Create Appointment</span>
