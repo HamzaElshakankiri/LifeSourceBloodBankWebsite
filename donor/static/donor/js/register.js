@@ -77,9 +77,8 @@ function validateAvatar(avatar) {
 
 function validateSignup(event) {
 
-	let tfname = document.getElementById("firstName");
-	console.log("my name is anthoy.... " + tfname.value);
-	let tlname = document.getElementById("lastName");
+	let tfname = document.getElementById("name");
+	//let tlname = document.getElementById("lastName");
 	let tpc = document.getElementById("pc");
 	let tdob = document.getElementById("dob");
 	let tem = document.getElementById("yourEmail");
@@ -88,8 +87,8 @@ function validateSignup(event) {
 
 	let formIsValid = true;
 
-   let btfname = firstNameHandler(document.getElementById("firstName")); 
-   let btlname = lastNameHandler(tlname);
+   let btfname = firstNameHandler(document.getElementById("name")); 
+   //let btlname = lastNameHandler(tlname);
    let btpc = pcHandler(tpc);
    let btdob = dobHandler(tdob);
    let btem = EmailHandler(tem);
@@ -127,7 +126,7 @@ function firstNameHandler(fname) {
 	if(fname.value == null || fname.value ==""){
 		fname.classList.add("class", "red");
 		document.getElementById("invalidfirstName").classList.remove("hidden");
-		document.getElementById("invalidfirstName").textContent= "Firstname cannot be empty!";
+		document.getElementById("invalidfirstName").textContent= "Name cannot be empty!";
 		return false;
 	}
 	else if (!validateUName(fname.value)) {
