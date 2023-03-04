@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>LifeSource</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <!-- Template Main CSS File -->
+    <link href="static/assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    {% include "navbar.html" %}
+    <main id="main" class="main">
+        <div class="pagetitle">
+          <h1>Blood Stock</h1>
+        </div>
+        <!-- End Page Title -->
+  <section class="section dashboard">
+  <br>
+  <section>
+  <div class="container">
+  
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="card bg-light">
+            <div class="card-body">
+                <div class="blood">
+                    <h2>A+ <i class="fas fa-tint" style="color: red"></i></h2>
+                </div><br><br>
+                <div>
+                    {{a.unit}}
+                </div>                            
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>B+ <i class="fas fa-tint" style="color: red"></i></h2>
+                    </div><br><br>
+                    <div>
+                      {{b.unit}}
+                    </div>                            
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>O+ <i class="fas fa-tint" style="color: red"></i></h2>
+                    </div><br><br>
+                    <div>
+                      {{o.unit}}
+                    </div>                            
+                </div>
+              </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>AB+ <i class="fas fa-tint" style="color: red"></i></h2>
+                    </div><br><br>
+                    <div>
+                      {{ab.unit}}
+                    </div>                            
+                </div>
+              </div>
+          </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="card bg-light">
+            <div class="card-body">
+                <div class="blood">
+                    <h2>A- <i class="fas fa-tint" style="color: red"></i></h2>
+                </div><br><br>
+                <div>
+                  {{a1.unit}}
+                </div>                            
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>B- <i class="fas fa-tint" style="color: red"></i></h2>
+                    </div><br><br>
+                    <div>
+                      {{b1.unit}}
+                    </div>                            
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>O- <i class="fas fa-tint" style="color: red"></i></h2>
+                    </div><br><br>
+                    <div>
+                      {{o1.unit}}
+                    </div>                            
+                </div>
+              </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>AB- <i class="fas fa-tint" style="color: red"></i></h2>
+                    </div><br><br>
+                    <div>
+                      {{ab1.unit}}
+                    </div>                            
+                </div>
+              </div>
+          </div>
+      </div>
+    </section>
+  <hr>
+  
+  <h4 class="text-center">Update Blood Unit</h4><br>
+  <div class="xyz">
+      <form class="form-inline row g-3" method="POST">
+        <div class="container1 row justify-content-center">
+          {% csrf_token %} 
+          <div class="col-lg-8 form-group mx-sm-3 mb-4">
+              <select name="bloodgroup" class="text-center form-control" required>
+                  <option value="" disabled="disabled" selected="selected">Choose Blood Group</option>
+                  <option>O+</option>
+                  <option>O-</option>
+                  <option>A+</option>
+                  <option>A-</option>
+                  <option>B+</option>
+                  <option>B-</option>
+                  <option>AB+</option>
+                  <option>AB-</option>
+              </select>
+            </div>
+          <div class="col-lg-8 form-group mx-sm-3 mb-2">
+            <input type="number" class="text-center form-control" name="unit" placeholder="Unit (ml)" required>
+          </div>
+          <p class="text-center mt-3 mb-3">
+            <button type="submit" class="btn btn-primary">Update</button>
+          </p>
+        </form>
+        </div>
+     </div>
+  </section>
+    {% include "footer.html" %}
+    </body>
+</html>
