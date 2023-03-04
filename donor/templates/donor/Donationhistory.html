@@ -422,6 +422,9 @@
 
                   <div class="card-body">
                     <h5 class="card-title">
+                      {% if request.user.is_authenticated %}
+                        <p>Hello {{request.user}}</p>
+                      {% end %}
                       Your Previous Donations<span>| Next Eligible Donation Date: May 22, 2023</span>
                     </h5>
 
