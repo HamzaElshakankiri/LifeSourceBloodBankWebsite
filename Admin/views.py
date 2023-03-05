@@ -8,10 +8,10 @@ from .import forms, models
 from .models import Stock
 from django.db.models import Sum, Q 
 
-
 def index(request):
-    return render(request, 'index')
+    return render(request, 'index.html')
 
+@login_required(login_url='login')
 def admin_submit_data(request):
     return render(request, 'admin_submit_data.html')
 
@@ -30,7 +30,7 @@ def admin_create_apptPage(request):
     context = {"data": data}
     return render(request, 'admin_create_appt.html', context)
 
- 
+
 
 def insertData(request):
     if request.method == "POST":
