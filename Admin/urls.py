@@ -4,7 +4,6 @@ from Admin import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('login', views.LoginPage, name='login'),
-   
     path('admin_dashboard', views.AdminDash, name='admin_dashboard'),
     path('admin_donation', views.AdminDonation, name='admin_donation'),
     path('admin_blood', views.admin_blood, name='admin_blood'), 
