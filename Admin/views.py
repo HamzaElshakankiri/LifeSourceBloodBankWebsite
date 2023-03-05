@@ -9,9 +9,7 @@ from .models import Stock
 from django.db.models import Sum, Q 
 
 
-def index(request):
-    return render(request, 'index')
-
+@login_required(login_url='login')
 def admin_submit_data(request):
     return render(request, 'admin_submit_data.html')
 
