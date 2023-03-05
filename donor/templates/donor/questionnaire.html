@@ -29,6 +29,7 @@
 
   <!-- Template Main CSS File -->
   <link rel="stylesheet" type= "text/css" href="{% static 'donor/css/style.css' %}">
+  <link rel="stylesheet" type= "text/css" href="{% static 'donor/css/questionnaire.css' %}">
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.5.0
@@ -333,12 +334,11 @@
 <aside id="sidebar" class="sidebar">
   <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="/donor/questionnaire">
+      <a class="nav-link" href="/questionnaire">
         <i class="bi bi-grid"></i>
         <span>Book an appointment</span>
       </a>
     </li>
-
 
     <li class="nav-item">
       <a class="nav-link" href="index.html">
@@ -347,37 +347,32 @@
       </a>
     </li>
 
-
      <li class="nav-item">
-      <a class="nav-link" href="/donor/users-profile">
+      <a class="nav-link" href="/users-profile">
         <i class="bi bi-grid"></i>
         <span>Profile</span>
       </a>
     </li>
-           
+            
       <li class="nav-item">
-      <a class="nav-link" href="/donor/donation-history">
+      <a class="nav-link" href="/donation-history">
         <i class="bi bi-grid"></i>
         <span>Previous Donations</span>
       </a>
     </li>
-           
+            
     <li class="nav-item">
-      <a class="nav-link" href="/donor/donorlogin">
+      <a class="nav-link" href="/donorlogin">
         <i class="bi bi-grid"></i>
         <span>Log Out</span>
       </a>
     </li>
 
-
-         
-   
-           
-
+          
+    
+            
 
     <!-- End Dashboard Nav -->
-
-
 
 
   </ul>
@@ -385,25 +380,23 @@
 <!-- End Sidebar-->
 
 
-
     <title>Quiz</title>
 
-  <body>
-      <div id="container">
-        <div id="warning"> This is your basic eligibility questionnaire to ensure that you are able to donate. More questions will be asked when you arive in person, these are only covering some common and basic questions.</div>
-          <div id="start">Start!</div>
-          <div id="quiz" style="display: none">
-              <div id="question"></div>
-              <div id="choices">
-                  <div class="choice" id="A" onclick="checkAnswer('A')"></div>
-                  <div class="choice" id="B" onclick="checkAnswer('B')"></div>
-              </div>
-              <div id="progress"></div>
-          </div>
-      </div>
-      <script src="questionnaire.js"></script>
-  </body>
-</main>
+<body>
+    <div id="container">
+        <div id="start">Start!</div>
+        <div id="quiz" style="display: none">
+            <div id="question"></div>
+            <div id="choices">
+                <div class="choice" id="A" onclick="checkAnswer('A')"></div>
+                <div class="choice" id="B" onclick="checkAnswer('B')"></div>
+            </div>
+            <div id="progress"></div>
+        </div>
+        <div id="scoreContainer" style="display: none"></div>
+    </div>
+    <script src="questionnaire.js"></script>
+</body>
 </html>
 
 

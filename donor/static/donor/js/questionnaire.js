@@ -77,7 +77,6 @@ start.addEventListener("click",startQuiz);
 // start quiz
 function startQuiz(){
     start.style.display = "none";
-    warning.style.display = "none";
     renderQuestion();
     quiz.style.display = "block";
 }
@@ -93,7 +92,7 @@ function checkAnswer(answer){
     }else{
         // answer is wrong
         // change progress color to red
-        location.assign('/questionnairefail');
+        location.assign('questionnairefail.html');
       
     }
     count = 0;
