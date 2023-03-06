@@ -10,19 +10,19 @@ from django.db.models import Sum, Q
 
 def index(request):
     return render(request, 'index.html')
-@login_required(login_url='login')
+@login_required(login_url='admin-login')
 def admin_submit_data(request):
     return render(request, 'admin_submit_data.html')
 
-@login_required(login_url='login')
+@login_required(login_url='admin-login')
 def admin_edit_appt(request):
     return render(request, 'admin_edit_appt.html')
 
-@login_required(login_url='login')
+@login_required(login_url='admin-login')
 def admin_update_appt(request):
     return render(request, 'admin_update_appt.html')
   
-@login_required(login_url='login')
+@login_required(login_url='admin-login')
 def admin_create_apptPage(request):
     data = Events.objects.all()
     print(data)
@@ -50,7 +50,7 @@ def insertData(request):
     admin_create_apptPage()
 
 
-@login_required(login_url='login')
+@login_required(login_url='admin-login')
 def updateData(request, id):
     if request.method == "POST":
         ename = request.POST['ename']
@@ -121,7 +121,7 @@ def home_view():
     blood8.save()
 
 
-@login_required(login_url='login')
+@login_required(login_url='admin-login')
 def AdminDash(request):
     x = Stock.objects.all()
     if len(x) == 0:
@@ -149,7 +149,7 @@ def AdminDash(request):
     return render(request, 'admin_dashboard.html', context)
 
 
-@login_required(login_url='login')
+@login_required(login_url='admin-login')
 def AdminDonation(request):
     data = Events.objects.all()
     print(data)
@@ -157,7 +157,7 @@ def AdminDonation(request):
     return render(request, 'admin_donation.html', context)
 
 
-@login_required(login_url='login')
+@login_required(login_url='admin-login')
 def admin_blood(request):
     a = Stock.objects.get(bloodgroup="A+")
     a1 = Stock.objects.get(bloodgroup="A-")
@@ -207,10 +207,10 @@ def LoginPage(request):
         else:
             return HttpResponse("Username or Password is incorrect!!!")
 
-    return render(request, 'login.html')
+    return render(request, 'admin-login.html')
 
 
 def LogoutPage(request):
     logout(request)
-    return redirect('login')
+    return redirect('index')
  
