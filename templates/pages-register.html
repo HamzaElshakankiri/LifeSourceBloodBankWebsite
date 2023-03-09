@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load widget_tweaks %}
 <!DOCTYPE html>
 
 <html lang="en">
@@ -112,54 +112,56 @@
                       id="signup-form"
                       class="row g-3 needs-validation"
                       method="POST"
+                      
                     >
                       {% csrf_token %}
 
                       <div class="col-12">
-                        <label
-                          for="yourName"
-                          class="form-label"
-                          font-weight="bold"
-                          >Name</label
-                        >
-                        <input
-                          type="text"
-                          name="name"
-                          class="form-control"
-                          id="name"
-                        />
+                        <label for="yourName" class="form-label" font-weight="bold">First Name</label>
+                        <!--<input type="text" name="name"class="form-control"  id="firstName" />-->
+                        {% render_field donorForm.donor_first_name|attr:'required:true' id="firstName" class="form-control"  %}
                         <div id="invalidfirstName" class="hidden red"></div>
                       </div>
 
-                      <!--<div class="col-12">
+                      <div class="col-12">
                       <label for="yourName" class="form-label">Last Name</label>
-                      <input type="text" name="name" class="form-control" id="lastName" />
+                      <!--<input type="text" name="name" class="form-control" id="lastName" />-->
+                      {% render_field donorForm.donor_last_name|attr:'required:true' id="lastName" class="form-control"  %}
                       <div id="invalidlastName" class="hidden red"></div>
-                    </div>-->
+                    </div>
 
                       <div class="col-12">
                         <label for="yourName" class="form-label"
                           >Postal Code</label
                         >
-                        <input
-                          type="text"
-                          name="name"
-                          class="form-control"
-                          id="pc"
-                        />
+                        <!--<input type="text" name="name"  class="form-control" id="pc"/>-->
+                        {% render_field donorForm.donor_postal|attr:'required:true' id="pc" class="form-control"    %}
                         <div id="invalidpc" class="hidden red"></div>
                       </div>
 
                       <div class="col-12">
                         <label for="yourEmail" class="form-label"
-                          >Email Address (This will be your username)</label
-                        >
-                        <input
+                          >Email Address (This will be your username)</label>
+                        <!--<input
                           type="email"
                           name="email"
                           class="form-control"
                           id="yourEmail"
-                        />
+                        />-->
+                        {% render_field userForm.email|attr:'required:true' id="yourEmail" class="form-control"   %}
+                        <div id="invalidEmail" class="hidden red"></div>
+                      </div>
+
+                      <div class="col-12">
+                        <label for="yourEmail" class="form-label"
+                          >Username  (This will be your email address)</label>
+                        <!--<input
+                          type="email"
+                          name="email"
+                          class="form-control"
+                          id="yourEmail"
+                        />-->
+                        {% render_field userForm.username|attr:'required:true' class="form-control"   %}
                         <div id="invalidEmail" class="hidden red"></div>
                       </div>
 
@@ -167,17 +169,19 @@
                         <label for="bioSex" class="form-label"
                           >Biological Sex</label
                         >
-                        <select id="bioSex" name="bioSex" class="form-control">
+                        {% render_field donorForm.donor_bio_sex|attr:'required:true' class="form-control"  %}
+                        <!--<select id="bioSex" name="bioSex" class="form-control">
                           <option value="male">Male</option>
                           <option value="female">Female</option>
-                        </select>
+                        </select>-->
                       </div>
 
                       <div class="col-12">
                         <label for="bloodType" class="form-label"
                           >Blood Type:
                         </label>
-                        <select
+                        {% render_field donorForm.donor_blood_type|attr:'required:true' class="form-control"  %}
+                        <!--<select
                           id="bloodType"
                           name="bloodType"
                           class="form-control"
@@ -192,19 +196,19 @@
                           <option value="AB+">AB+</option>
                           <option value="AB-">AB-</option>
                           <option value="Rh">Rh</option>
-                        </select>
+                        </select>-->
                       </div>
 
                       <div class="col-12">
                         <label for="birthday" class="form-label">
-                          Date of Birth</label
-                        >
-                        <input
+                          Date of Birth</label>
+                        <!--<input
                           type="date"
                           id="dob"
                           name="birthday"
                           class="form-control"
-                        />
+                        />-->
+                        {% render_field donorForm.donor_birthday|attr:'required:true' id="dob" class="form-control"   %}
                         <div id="invalidDob" class="hidden red"></div>
                       </div>
 
@@ -213,12 +217,13 @@
                           >Height</label
                         >
                         <div class="input-group has-validation">
-                          <input
+                          <!--<input
                             type="number"
                             name="height"
                             class="form-control"
                             id="yourHeight"
-                          />
+                          />-->
+                          {% render_field donorForm.donor_height|attr:'required:true' id="yourHeight" class="form-control"   %}
                           <span class="input-group-text" id="inputGroupPrepend"
                             >cm</span
                           >
@@ -233,12 +238,13 @@
                           >Weight</label
                         >
                         <div class="input-group has-validation">
-                          <input
+                          <!--<input
                             type="number"
                             name="weight"
                             class="form-control"
                             id="yourWeight"
-                          />
+                          />-->
+                          {% render_field donorForm.donor_weight|attr:'required:true' id="yourWeight" class="form-control"   %}
                           <span class="input-group-text" id="inputGroupPrepend"
                             >kg</span
                           >
@@ -258,6 +264,8 @@
                           class="form-control"
                           id="yourPassword"
                         />
+                        {% render_field userForm.password|attr:'required:true' class="form-control"  %}
+
                         <div id="invalidPwd" class="hidden red"></div>
                         <ul>
                           <li>Must be atleast 8 characers long</li>
@@ -281,14 +289,31 @@
 
                       <div class="col-12">
                         <label for="emergencyContact" class="form-label"
+                          >Emergency Contact Number</label
+                        >
+                        <!--<input
+                          type="tel"
+                          name="emergencyContact"
+                          class="form-control"
+                          id="emergencyContact"
+                        />-->
+                        {% render_field donorForm.donor_contact_phone|attr:'required:false'  class="form-control"   %}
+                        <div class="invalid-feedback">
+                          Please enter your Emergency Contact Number!
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <label for="emergencyContact" class="form-label"
                           >Emergency Contact Name</label
                         >
-                        <input
+                        <!--<input
                           type="text"
                           name="emergencyContact"
                           class="form-control"
                           id="emergencyContact"
-                        />
+                        />-->
+                        {% render_field donorForm.emergency_contact_name|attr:'required:false' id="emergencyContact" class="form-control"   %}
                         <div class="invalid-feedback">
                           Please enter your Emergency Contact Name!
                         </div>
@@ -298,12 +323,13 @@
                         <label for="emergencyContact" class="form-label"
                           >Emergency Contact Number</label
                         >
-                        <input
+                        <!--<input
                           type="tel"
                           name="emergencyContact"
                           class="form-control"
                           id="emergencyContact"
-                        />
+                        />-->
+                        {% render_field donorForm.emergency_contact_phone|attr:'required:false' id="emergencyContact" class="form-control"   %}
                         <div class="invalid-feedback">
                           Please enter your Emergency Contact Number!
                         </div>

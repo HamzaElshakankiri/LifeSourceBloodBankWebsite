@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -111,18 +112,18 @@
                       id="login-form"
                       method="POST"
                     >
+                    {% csrf_token %}
                       <div class="col-12">
-                        {% csrf_token %}
                         <label for="yourEmail" class="form-label"
                           >Email address</label
                         >
-
-                        <input
+                        {% render_field form.username class="form-control" id="Email" %}
+                        <!--<input
                           type="text"
                           name="email"
                           class="form-control"
                           id="Email"
-                        />
+                        />-->
                         <div id="invalid-email" class="hidden red"></div>
                       </div>
 
@@ -130,12 +131,13 @@
                         <label for="yourPassword" class="form-label"
                           >Password</label
                         >
-                        <input
+                        <!--input
                           type="password"
                           name="password"
                           class="form-control"
                           id="Password"
-                        />
+                        /-->
+                        {% render_field form.password class="form-control" id="Password" %}
                         <div id="invalid-password" class="hidden red"></div>
                       </div>
 
