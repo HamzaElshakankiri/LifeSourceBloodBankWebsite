@@ -13,17 +13,17 @@ let questions = [
         choiceB : "No",
         correct : "A"
     },{
-        question : "Within the past 3 months, have you gotten a Piercing or Tattoo?",
+        question : "Within the past 3 months, have you gotten a piercing or tattoo?",
         choiceA : "Yes",
         choiceB : "No",
         correct : "B"
     },{
-        question : "Have you recently received a Vaccine?(within the past 3 weeks)",
+        question : "Within the past 3 weeks, have you received a vaccine?",
         choiceA : "Yes",
         choiceB : "No",
         correct : "B"
       },{
-        question : "Could you currently be pregnant ",
+        question : "Could you currently be pregnant.",
         choiceA : "Yes",
         choiceB : "No",
         correct : "B"
@@ -38,20 +38,20 @@ let questions = [
         choiceB : "No",
         correct : "B"
       },{
-        question : "Other than Aspirin, Tylenol, Advil, oral birth control(or generic counterparts), have you taken any other medications recently, or regularly? MORE DETAILS: LINK",
+        question : "Many medications that affect your blood such as Aspirin or Warfarin can impact your current elgibility. Within the past 14 days, have you taken any blood-related meds?",
         choiceA : "Yes",
         choiceB : "No",
         correct : "B"
       },{
-        question : "We currently do not accept users who use illegal drugs, have you ever used an illegal drug(excluding cannabis)",
+        question : "We currently do not accept users who use illegal drugs, have you ever used an illegal drug?",
         choiceA : "Yes",
         choiceB : "No",
         correct : "B"
       },{
-        question : "If this is your first donation, more sensitive medical questions will be asked in your pre-donation interview. Do you swear that your answers given are 100% truthful?",
+        question : "More sensitive medical questions will be asked in your pre-donation interview. Do you swear that your answers given are so far are 100% truthful?",
         choiceA : "Yes",
         choiceB : "No",
-        correct : "B"
+        correct : "A"
       }
       
 ];
@@ -77,6 +77,7 @@ start.addEventListener("click",startQuiz);
 // start quiz
 function startQuiz(){
     start.style.display = "none";
+    warning.style.display = "none"
     renderQuestion();
     quiz.style.display = "block";
 }
@@ -85,22 +86,18 @@ function startQuiz(){
 
 function checkAnswer(answer){
     if( answer == questions[runningQuestion].correct){
-        // answer is correct
-
-        // change progress color to green
-       
-    }else{
-        // answer is wrong
-        // change progress color to red
-        location.assign('questionnairefail.html');
-      
-    }
-    count = 0;
-    if(runningQuestion < lastQuestion){
+      if(runningQuestion < lastQuestion){
         runningQuestion++;
         renderQuestion();
     }else{
         // end the quiz and show the score
-        location.reload()
+        location.assign('/donor_bookappt');
+    }
+    }else{
+        // answer is wrong
+        // change progress color to red
+        location.assign('/questionnairefail');
+        
+      
     }
 }

@@ -68,14 +68,14 @@ def donation_history_view(request):
         context={'donor_first_name':donor_first_name}
         return render(request,'Donationhistory.html')
      
-           
+@login_required(login_url='pages-login')         
 def questionnare_view(request):
         return render(request, 'questionnaire.html')
 
-
+@login_required(login_url='pages-login')
 def questionnairefail_view(request):
         return render(request,'questionnairefail.html')
 
-
+@login_required(login_url='pages-login')
 def users_profile_view(request):
         return render(request, 'users-profile.html')

@@ -4,10 +4,10 @@ body{
 }
 
 #container{
-  margin : 400px auto;
+  margin : 200px auto;
   background-color: white;
-  height: 400px;
-  width : 900px;
+  height: 325px;
+  width : 875px;
   border-radius: 5px;
   box-shadow: 0px 5px 15px 0px;
   position: relative;
@@ -27,23 +27,9 @@ body{
   color : lightgrey;
 }
 #start:hover{
-  border: 3px solid lightseagreen;
-  color : lightseagreen;
+  border: 3px solid lightblue;
+  color : darkblue;
 }
-
-#qImg{
-  width : 200px;
-  height : 200px;
-  position: absolute;
-  left : 0px;
-  top : 0px;
-}
-#qImg img{
-  width : 200px;
-  height : 200px;
-  border-top-left-radius: 5px;
-}
-
 #question{
   width:700px;
   height : 125px;
@@ -77,75 +63,6 @@ body{
   border : 2px solid grey;
   font-weight: bold;
 }
-
-#timer{
-  position: absolute;
-  height : 100px;
-  width : 200px;
-  bottom : 0px;
-  text-align: center;
-}
-#counter{
-  font-size: 3em;
-}
-#btimeGauge{
-  width : 150px;
-  height : 10px;
-  border-radius: 10px;
-  background-color: lightgray;
-  margin-left : 25px;
-}
-#timeGauge{
-  height : 10px;
-  border-radius: 10px;
-  background-color: mediumseagreen;
-  margin-top : -10px;
-  margin-left : 25px;
-}
-#progress{
-  width : 500px;
-  position: absolute;
-  bottom : 0px;
-  right : 0px;
-  padding:5px;
-  text-align: right;
-}
-.prog{
-  width : 25px;
-  height : 25px;
-  border: 1px solid #000;
-  display: inline-block;
-  border-radius: 50%;
-  margin-left : 5px;
-  margin-right : 5px;
-}
-#scoreContainer{
-  margin : 20px auto;
-  background-color: white;
-  opacity: 0.8;
-  height: 300px;
-  width : 700px;
-  border-radius: 5px;
-  box-shadow: 0px 5px 15px 0px;
-  position: relative;
-  display: none;
-}
-#scoreContainer img{
-  position: absolute;
-  top:100px;
-  left:325px;
-}
-#scoreContainer p{
-  position: absolute;
-  display: block;
-  width : 59px;
-  height :59px;
-  top:130px;
-  left:325px;
-  font-size: 1.5em;
-  font-weight: bold;
-  text-align: center;
-}
 .red {
   order: solid 1px #720000;
   background-color: #c72a2a;
@@ -168,4 +85,19 @@ body{
   filter: dropshadow(color=#595959, offx=1, offy=1);
   text-decoration: none;
 }
-  
+#fail
+{
+  text-align: center;
+  margin: auto;
+  margin-bottom: 175px;
+}
+#failbutton
+{
+  text-align: center;
+  vertical-align: bottom;
+}
+#warning
+{
+  color: darkblue;
+  text-align: center;
+}
