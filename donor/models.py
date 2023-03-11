@@ -44,7 +44,7 @@ class Donor(ObservableModel):
     def __str__(self) :
         return self.user.email
     
-class WelcomeEmailObserver:
+class WelcomeUserEmailObserver:
     def update(self, observable, **kwargs):
         if isinstance(observable, Donor) and kwargs.get('created', False):
             user = observable
@@ -54,5 +54,18 @@ class WelcomeEmailObserver:
                 f'Hi {user.donor_first_name},\n\nThanks for joining My Site!',
                 'lifesourcebloodbankadm@gmail.com',
                 [user.user.email],
+                fail_silently=False,
+            )
+
+class NewUserJoinedObserver:
+    def update(self, observable, **kwargs):
+        if isinstance(observable, Donor) and kwargs.get('created', False):
+            user = observable
+            admin = 'lifesourcebloodbankadm@gmail.com'
+            send_mail(
+                'A new Donor has Joined our site',
+                f'A user by the name of {user.donor_first_name} has joined!',
+                'lifesourcebloodbankadm@gmail.com',
+                [admin],
                 fail_silently=False,
             )

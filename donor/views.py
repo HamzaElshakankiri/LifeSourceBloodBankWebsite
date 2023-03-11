@@ -10,7 +10,7 @@ from django.core.mail import send_mail
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from . import forms,models
-from .models import Donor, WelcomeEmailObserver
+from .models import Donor, WelcomeUserEmailObserver, NewUserJoinedObserver
 from Admin.models import Events
 from datetime import date
 
@@ -40,8 +40,11 @@ def donor_signup_view(request):
                      donor.save()
                      my_donor_group = Group.objects.get_or_create(name='DONOR')
                      my_donor_group[0].user_set.add(user)
-                     donor.add_observer(WelcomeEmailObserver())
+                     donor.add_observer(WelcomeUserEmailObserver())
+                     donor.add_observer(NewUserJoinedObserver())
                      donor.notify_observers(created=True)
+                     donor.remove_observer(WelcomeUserEmailObserver())
+                     donor.remove_observer(NewUserJoinedObserver())
                      return HttpResponseRedirect(reverse('pages-login'))
                 else:
                         print(userForm.errors)
