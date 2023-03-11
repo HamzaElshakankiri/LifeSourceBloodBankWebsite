@@ -76,7 +76,7 @@
         <header id="header" class="fixed-top">
           <div class="container d-flex align-items-center">
             <a href="index.html" class="logo me-auto"
-              ><img src="static/assets/img/" alt=""
+            ><img src="static/assets/img/" alt=""
             /></a>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <h1 class="logo me-auto"><a href="index.html">Life Source Blood Bank</a></h1> -->
@@ -270,18 +270,19 @@
                 </p>
               </div>
 
-              <div class="row">
+              {% comment %} <div class="row">
                 <div class="col-lg-6" data-aos="fade-right">
                   <img
                     src="static/assets/img/about.jpg"
                     class="img-fluid"
                     alt=""
-                  />
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
+                  /> {% endcomment %}
+
+                </div class="row ">
+                 <div class="col-lg-6 pt-4 pt-lg-0 w-50 mx-auto content" data-aos="fade-left">
                   <h3>Features of Life Source Blood Bank</h3>
                   <p class="fst-italic">
-                    To better your donation exprience, ourwebsite has many great
+                    To better your donation exprience, our website has many great
                     features:
                   </p>
                   <ul>
@@ -458,7 +459,7 @@
           <section id="faq" class="faq section-bg">
             <div class="container" data-aos="fade-up">
               <div class="section-title">
-                <h2>Frequently Asked Questioins</h2>
+                <h2>Frequently Asked Questions</h2>
                 <p>Find answers to frequently asked questions.</p>
               </div>
 
@@ -608,21 +609,22 @@
                   <div class="info-box">
                     <i class="bx bx-map"></i>
                     <h3>Our Address</h3>
-                    <p>3737 Wascana Pkwy, Regina, SK S4S 0A2</p>
+                    <a href='https://www.google.com/maps/place/University+of+Regina/@50.4154542,-104.5900189,17z/data=!3m1!4b1!4m6!3m5!1s0x531ea090798fa7ab:0x47e1c32f9f870c24!8m2!3d50.4154542!4d-104.5878302!16zL20vMDI4MGd4
+                    ' target="_blank">3737 Wascana Pkwy, Regina, SK S4S 0A2</a>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="info-box mt-4">
                     <i class="bx bx-envelope"></i>
                     <h3>Email Us</h3>
-                    <p>LifeSourceBloodBankadm@gmail.com</p>
+                    <a href='mailto:LifeSourceBloodBankadm@gmail.com' target="_blank">LifeSourceBloodBankadm@gmail.com</a>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="info-box mt-4">
                     <i class="bx bx-phone-call"></i>
                     <h3>Call Us</h3>
-                    <p>+1 (306) 585-4111</p>
+                    <a href=""> +1 (306)-585-4111 </a>
                   </div>
                 </div>
               </div>
@@ -723,7 +725,8 @@
         <!-- End #main -->
 
         <!-- ======= Footer ======= -->
-        <footer id="footer">
+       
+        <!-- <footer id="footer">
           <div class="footer-top">
             <div class="container">
               <div class="row">
@@ -759,10 +762,11 @@
                 </div>
               </div>
             </div>
-          </div>
-
+          </div>  -->
+       
+        <footer id="footer">
           <div class="container">
-            <div class="copyright">
+            <div class="copyright" style="color: #555555">
               &copy; Copyright <strong><span>LifeSource</span></strong
               >. All Rights Reserved
             </div>

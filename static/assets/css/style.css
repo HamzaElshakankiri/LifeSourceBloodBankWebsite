@@ -132,8 +132,12 @@ h6 {
   text-decoration: none;
 }
 
+.signOut {
+  margin-left: 10%;
+}
+
 .dropdown-menu .dropdown-divider {
-  color: #a5c5fe;
+  color: #88a8df;
   margin: 0;
 }
 

@@ -20,6 +20,7 @@ class Events(models.Model):
     etimest = models.CharField(max_length=25, blank=False, null=False)
     etimend = models.CharField(max_length=25, blank=False, null=False)
     edonor_email=models.CharField(max_length=25, default='0')
-                  
+    edonor_name=models.CharField(max_length=50, default='')
+    edonor_blood=models.CharField(max_length=10, default='Unknown')
     def __str__(self):
         return self.ename

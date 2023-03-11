@@ -21,7 +21,17 @@
   
 
     <!-- Template Main CSS File -->
-    <link href="static/assets/css/style2.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/style.css' %}"
+    />    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+      .fa {
+        margin-top: 5px;
+        height: 22.5px;
+      }
+    </style>
   </head>
 
   <body>
@@ -35,102 +45,62 @@
             <div class="container">
               <div class="row justify-content-center">
                 <div
-                  class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center"
+                  class="col-lg-5 col-md-6 d-flex flex-column align-items-center justify-content-center"
                 >
-                  <div class="d-flex justify-content-center py-4">
-                    <a
-                      href="{% url 'admin-login' %}"
-                      class="logo d-flex align-items-center w-auto"
-                    >
-                    <h1  class="d-none d-lg-block">LifeSourceAdmin</h1>
-
-                     </a>
-                  </div>
+                <div class="d-flex justify-content-center py-4">
+                  <h2 class="d-flex align-items-center w-auto">
+                    <img src="assets/img/logo.png" alt="" />
+                    <span class="d-none d-lg-block" style="color: #D81B60;  font-weight: bold; font-family:Nunito, sans-serif;">LifeSource Admin Account</span>
+                  </h2>
+                </div>
                   <!-- End Logo -->
   
                   <div class="card mb-3">
                     <div class="card-body">
-                      <div class="pt-4 pb-2">
-                        <h5 class="card-title text-center pb-0 fs-4">
+                      <div class="pt-2 pb-2">
+                        <h5 class="card-title text-center pb-0 fs-4" style="color: #D81B60;">
                           Login to Your Account
                         </h5>
                         <p class="text-center small">
-                          Enter your username & password to login
+                          Enter your Username & Password to login
                         </p>
                       </div>
   
                       <form action="" method="post"  class="row g-3 needs-validation" novalidate>
-                              {% csrf_token %}
-  
+                         {% csrf_token %}
+                        <div class="col-12 form-group">
+                          <label for="yourUsername" class="form-label">Username</label> 
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">
+                                <i class="fa fa-user"></i>
+                              </div>
+                            </div> 
+                            <input class="form-control" type="text" placeholder="Enter your username" id="username" name="username" required/>
+                          </div>
+                        </div>
                               
-                        <div class="col-12">
-                          <label for="yourUsername" class="form-label"
-                            >Username</label
-                          >
-                          <div class="input-group has-validation">
-                            <span class="input-group-text" id="inputGroupPrepend"
-                              >@</span
-                            >
-                            <input
-                              
-                              class="form-control"
-                              type="text"
-          placeholder="Enter Username"
-          id="username"
-          name="username"
-                              required
-                            />
-                            <div class="invalid-feedback">
-                              Please enter your username.
-                            </div>
+                        <div class="col-12 form-group">
+                          <label for="yourUsername" class="form-label">Password</label> 
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">
+                                <i class="fa fa-key"></i>
+                              </div>
+                            </div> 
+                            <input class="form-control" type="password" placeholder="Enter your password" id="password" name="pass" required/>
                           </div>
                         </div>
-  
-                        <div class="col-12">
-                          <label for="yourPassword" class="form-label"
-                            >Password</label
-                          >
-                          <input
-                          type="password" placeholder="Password" id="password" name="pass"
-                            class="form-control"
-                           
-                            required
-                          />
-                          <div class="invalid-feedback">
-                            Please enter your password!
-                          </div>
+
+                        <div class="col-4 mt-4 mb-2">
+                          <a class="btn btn-success w-100" href="{% url 'index'%}"> Home </a>
                         </div>
-  
-                        <div class="col-12">
-                          <div class="form-check">
-                            <input
-                              class="form-check-input"
-                              type="checkbox"
-                              name="remember"
-                              value="true"
-                              id="rememberMe"
-                            />
-                            <label class="form-check-label" for="rememberMe"
-                              >Remember me</label
-                            >
-                          </div>
-                        </div>
-                        <div class="col-4">
-                          <button class="btn btn-primary w-100" type="submit">
-                            Login  
-                        </button>
+                        <div class="col-4 mt-4 mb-2">
+                          <button class="btn btn-primary w-100" type="submit" value="Login">Login</button>
                         </div> 
-                        <div class="col-4">
-                          <button   class="btn btn-secondary w-100" type="reset">
-                            Reset  
-                        </button>
+                        <div class="col-4 mt-4 mb-2">
+                          <button class="btn btn-secondary w-100" type="reset">Clear</button>
                         </div>
-                        <div class="col-4">
-                            <a  class="btn btn-success w-100" href=""> Cancel </a>
-                        </div>
-                                             
-                  
-                         
                         </div>
                       </form>
                     </div>
@@ -142,13 +112,7 @@
         </div>
       </main>
       <!-- End #main -->
-  
-      <a
-        href="#"
-        class="back-to-top d-flex align-items-center justify-content-center"
-        ><i class="bi bi-arrow-up-short"></i
-      ></a>
-  
+
       <!-- Vendor JS Files -->
       <script src="static/assets/vendor/apexcharts/apexcharts.min.js"></script>
       <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -158,8 +122,5 @@
       <script src="static/assets/vendor/simple-datatables/simple-datatables.js"></script>
       <script src="static/assets/vendor/tinymce/tinymce.min.js"></script>
       <script src="static/assets/vendor/php-email-form/validate.js"></script>
-  
-      <!-- Template Main JS File -->
-      <script src="static/assets/js/main.js"></script>
     </body>
 </html>

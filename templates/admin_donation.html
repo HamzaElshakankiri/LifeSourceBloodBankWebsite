@@ -1,3 +1,6 @@
+{% load static %}
+
+{% block content%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +24,7 @@
                   <div class="card recent-sales overflow-auto">  
                     <div class="card-body">
                       <h5 class="card-title">
-                        Donation History List
+                        Donation List
                         <!-- <span>| Today</span> -->
                       </h5>
                       <table class="table table-borderless datatable">
@@ -29,45 +32,22 @@
                           <tr>
                             <th scope="col">Donor Name</th>
                             <th scope="col">Blood Type</th>
-                            <th scope="col">Event Name</th>
+                            <th scope="col">Location</th>
                             <th scope="col">Donation Date</th>
                             <th scope="col">Donation Time</th>
                           </tr>
                         </thead>
-  
                          <tbody>
+                          {% for d in event %}
                           <tr>
-                            <td>Brandon Jacob</td>
-                            <td>
-                              <a href="#" class="text-danger"> O+ </a></td>
-                            <td>SK BloodCamp</td>
-                            <td>2023-02-08</td>
-                            <td>11:02</td>
+                            <td> {{d.edonor_name}}</td>
+                            <td> {{d.edonor_blood}} </td>
+                            <td> {{d.elocation}}</td>
+                            <td> {{d.edate}}</td>
+                            <td> {{d.etimest}} - {{d.etimend}}</td>
                           </tr>
-                          <tr>
-                            <td>John Doe</td>
-                            <td>
-                              <a href="#" class="text-danger"> B+ </a></td>
-                            <td>UofR BloodDrive</td>
-                            <td>2023-01-07</td>
-                            <td>11:27</td>
-                          </tr>
-                          <tr>
-                            <td>Kelly Smith</td>
-                            <td>
-                              <a href="#" class="text-danger"> B- </a></td>
-                            <td>Saist BloodDrive</td>
-                            <td>2022-12-15</td>
-                            <td>12:15</td>
-                          </tr>
-                          <tr>
-                            <td>Sara Hamann</td>
-                            <td>
-                              <a href="#" class="text-danger"> O- </a></td>
-                            <td>CJK BloodDonation</td>
-                            <td>2022-12-12</td>
-                            <td>13:32</td>
-                          </tr>
+                          {% endfor %}
+                          {% endblock %}
                          </tbody>
                       </table>
                     </div>

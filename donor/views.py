@@ -61,14 +61,9 @@ def users_profile(request,donor_email):
         context = { 'user' : user, 'donor' : donor}
         return render(request, 'users-profile.html',context)
 
-
-
-
-
-
 @login_required(login_url='pages-login')
 def donor_bookappt(request):
-    event = Events.objects.filter(edonor_email='0').filter(edate__gte=today)
+    event = Events.objects.filter(edonor_email='0', edonor_name='').filter(edate__gte=today)
     context = { 'event' : event}
     return render(request, 'donor_bookappt.html', context)
 
@@ -76,8 +71,12 @@ def donor_bookappt(request):
 def bookAppt(request,e_id,donor_email):
        event = Events.objects.get(id=e_id)
        event.edonor_email=donor_email
-       event.save()
-       
+       donor = Donor.objects.get(user__email=donor_email)
+       dName = donor.donor_first_name.strip() + " " + donor.donor_last_name.strip()
+       dBlood = donor.donor_blood_type
+       event.edonor_blood=dBlood
+       event.edonor_name=dName
+       event.save()       
        return redirect('Donation.history.html')
 
 @login_required(login_url='pages-login')
@@ -86,12 +85,15 @@ def donor_currentappt_specific(request,donor_email):
     context = { 'event' : event}
     return render(request, 'donor_currentappt.html', context)
 
-       
-
 @login_required(login_url='pages-login')
 def donor_currentappt(request,e_id,donor_email):
         event = Events.objects.get(id=e_id)
         event.edonor_email=donor_email
+        donor = Donor.objects.get(user__email=donor_email)
+        dName = donor.donor_first_name.strip() + " " + donor.donor_last_name.strip()
+        event.edonor_name=dName
+        dBlood = donor.donor_blood_type
+        event.edonor_blood=dBlood
         event.save()
         context = {}
         event = Events.objects.filter(edonor_email=donor_email).filter(edate__gte=today)
@@ -103,6 +105,7 @@ def donor_currentappt(request,e_id,donor_email):
 def donor_delete_currentappt(request,e_id,donor_email):
         event = Events.objects.get(id=e_id)
         event.edonor_email='0'
+        event.edonor_name=''
         event.save()
         context = {}
         event = Events.objects.filter(edonor_email=donor_email).filter(edate__gte=today)
@@ -121,12 +124,11 @@ def donation_history_view(request,donor_email):
 def questionnare_view(request):
         return render(request, 'questionnaire.html')
 
-
 def questionnairefail_view(request):
         return render(request,'questionnairefail.html')
 
-
-
+def users_profile_view(request):
+        return render(request, 'users-profile.html')
 
 def LogoutPage(request):
     logout(request)

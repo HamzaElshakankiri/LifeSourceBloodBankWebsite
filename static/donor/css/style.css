@@ -300,9 +300,9 @@ div[id^="invalid"]{
 }
 
 /* Accordion */
-.accordion-item {
+/* .accordion-item {
   border: 1px solid #ebeef4;
-}
+} */
 
 .accordion-button:focus {
   outline: 0;
@@ -367,7 +367,7 @@ div[id^="invalid"]{
   border: none;
   color: #2c384e;
 }
-
+ea
 .nav-tabs-bordered .nav-link:hover,
 .nav-tabs-bordered .nav-link:focus {
   color: #4154f1;
@@ -395,6 +395,13 @@ div[id^="invalid"]{
 .logo img {
   max-height: 26px;
   margin-right: 6px;
+}
+
+.logHead {
+  font-size: 26px;
+  font-weight: 700;
+  color: #012970;
+  font-family: "Nunito", sans-serif;
 }
 
 .logo span {
@@ -1256,7 +1263,7 @@ div[id^="invalid"]{
   padding: 20px 0;
   font-size: 14px;
   transition: all 0.3s;
-  border-top: 1px solid #cddfff;
+  /* border-top: 1px solid #cddfff; */
 }
 
 .footer .copyright {

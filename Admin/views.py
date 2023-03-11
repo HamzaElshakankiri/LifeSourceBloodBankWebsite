@@ -6,6 +6,7 @@ from .models import Events
 from django.contrib import messages
 from .import forms, models
 from .models import Stock
+from donor.models import Donor
 from django.db.models import Sum, Q 
 
 def index(request):
@@ -144,6 +145,7 @@ def AdminDash(request):
         'ab1': ab1,
         'o': o,
         'o1': o1,
+        'totaldonors': Donor.objects.all().count(),
         'totalbloodunit': totalunit['unit__sum'],
     }
     return render(request, 'admin_dashboard.html', context)
@@ -151,9 +153,11 @@ def AdminDash(request):
 
 @login_required(login_url='admin-login')
 def AdminDonation(request):
-    data = Events.objects.all()
-    print(data)
-    context = {"data": data}
+    event = Events.objects.all()
+    # data = Events.objects.all()
+    # print(data)
+    # context = {"data": data}
+    context = {"event": event}
     return render(request, 'admin_donation.html', context)
 
 
