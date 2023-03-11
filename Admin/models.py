@@ -19,6 +19,7 @@ class Events(models.Model):
     edate = models.CharField(max_length=25, blank=False, null=False)
     etimest = models.CharField(max_length=25, blank=False, null=False)
     etimend = models.CharField(max_length=25, blank=False, null=False)
+    edonor_email=models.CharField(max_length=25, default='0')
                   
     def __str__(self):
         return self.ename

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static%}
 {% block content %}
 <html lang="en">
   <head>
@@ -9,20 +10,21 @@
     <meta content="" name="description" />
     <meta content="" name="keywords" />
     <!-- Favicons -->
-    <link href="static/assets/img/lgo.png" rel="icon" />
+    <link href="{% static 'donor/img/logo.png' %}" rel="icon" />
 
     <!-- Vendor CSS Files -->
     <link
-      href="static/assets/vendor/bootstrap/css/bootstrap.min.css"
+      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
       rel="stylesheet"
     />
     <link
-      href="static/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}"
       rel="stylesheet"
     />
 
     <!-- Template Main CSS File -->
-    <link href="static/assets/css/style.css" rel="stylesheet" />
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+    
     <script
       src="https://kit.fontawesome.com/a076d05399.js"
       crossorigin="anonymous"
@@ -37,7 +39,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
       <div class="d-flex align-items-center justify-content-between">
         <a
-          href="{% url 'admin_dashboard'%}"
+          href="{% url 'donor_bookappt'%}"
           class="logo d-flex align-items-center"
         >
           <img src="static/assets/img/logo.png" alt="" />
@@ -57,7 +59,7 @@
             >
               <i class="fas fa-user-circle" style="color: red"></i>
               <span class="d-none d-md-block dropdown-toggle ps-2"
-                >Welcome {{user.username }}</span
+                >Welcome {{user.username}}</span
               > </a
             ><!-- End Profile Iamge Icon -->
 
@@ -96,25 +98,38 @@
           </li>
     
           <li class="nav-item">
-            <a class="nav-link" href="/users-profile">
+            <a class="nav-link" href="/donor_currentappt/{{request.user}}">
               <i class="bi bi-grid"></i>
-              <span>Profile</span>
-            </a>
-          </li>
-                  
-            <li class="nav-item">
-            <a class="nav-link" href="/donation-history">
-              <i class="bi bi-grid"></i>
-              <span>Previous Donations</span>
+              <span>My Current Appointments</span>
             </a>
           </li>
                   
           <li class="nav-item">
+            <a class="nav-link" href="/donation-history/{{request.user}}">
+              <i class="bi bi-grid"></i>
+              <span>My Previous Appointments</span>
+            </a>
+          </li>
+                  
+          <li class="nav-item">
+            <a class="nav-link" href="/users-profile/{{request.user}}">
+              <i class="bi bi-grid"></i>
+              <span>Profile</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">
+              <i class="bi bi-grid"></i>
+              <span>Go to main page</span>
+            </a>
+          </li>
+          <!--li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">
               <i class="bi bi-grid"></i>
               <span>Log Out</span>
             </a>
-          </li>
+          </li-->
       </ul>
       <!-- End Dashboard Nav -->
     </aside>

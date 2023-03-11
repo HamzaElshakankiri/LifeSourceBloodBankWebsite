@@ -11,13 +11,19 @@ urlpatterns = [
    # path('donor-dashboard/', views.donor_dashboard_view,name='donor-dashboard'),
    # path('donate-blood/', views.donate_blood_view,name='donate-blood'),
    
-    path('donation-history/', views.donation_history_view,name='donation-history'),
+    path('donation-history/<donor_email>', views.donation_history_view,name='donation-history'),
    
     path('questionnaire/', views.questionnare_view,name='questionnaire'),
     
     path('questionnairefail/', views.questionnairefail_view,name='questionnairefail'),
     
-    path('users-profile/', views.users_profile_view,name='users-profile'),
+    path('users-profile/<donor_email>', views.users_profile,name='users-profile'),
 
-    path('donor_bookappt/', views.donor_bookappt,name='donor_bookappt')
+    path('donor_bookappt/', views.donor_bookappt,name='donor_bookappt'),
+
+    path('donor_currentappt/<int:e_id>/<donor_email>', views.donor_currentappt, name="donor_currentappt"),
+
+    path('donor_currentappt/<donor_email>', views.donor_currentappt_specific, name="bookAppt"),
+
+    path('donor_delete_currentappt/<int:e_id>/<donor_email>', views.donor_delete_currentappt, name="donor_delete_currentappt"),
 ]
