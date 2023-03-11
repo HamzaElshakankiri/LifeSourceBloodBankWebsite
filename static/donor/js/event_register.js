@@ -1,5 +1,5 @@
-var firstname = document.getElementById("name");
-//var lastname = document.getElementById("lastName");
+var firstname = document.getElementById("firstName");
+var lastname = document.getElementById("lastName");
 var pc = document.getElementById("pc");
 var mail = document.getElementById("yourEmail");
 var dob = document.getElementById("dob");

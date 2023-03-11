@@ -78,7 +78,7 @@ function validateAvatar(avatar) {
 function validateSignup(event) {
 
 	let tfname = document.getElementById("name");
-	//let tlname = document.getElementById("lastName");
+	let tlname = document.getElementById("lastName");
 	let tpc = document.getElementById("pc");
 	let tdob = document.getElementById("dob");
 	let tem = document.getElementById("yourEmail");
@@ -88,7 +88,7 @@ function validateSignup(event) {
 	let formIsValid = true;
 
    let btfname = firstNameHandler(document.getElementById("name")); 
-   //let btlname = lastNameHandler(tlname);
+   let btlname = lastNameHandler(tlname);
    let btpc = pcHandler(tpc);
    let btdob = dobHandler(tdob);
    let btem = EmailHandler(tem);
