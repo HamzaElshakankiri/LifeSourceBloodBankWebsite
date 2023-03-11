@@ -1,9 +1,29 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 
 # Create your models here.
 
-class Donor(models.Model):
+class ObservableModel(models.Model):
+    observers = []
+    
+    class Meta:
+        abstract = True
+    
+    def add_observer(self, observer):
+        if observer not in self.observers:
+            self.observers.append(observer)
+    
+    def remove_observer(self, observer):
+        if observer in self.observers:
+            self.observers.remove(observer)
+    
+    def notify_observers(self, **kwargs):
+        for observer in self.observers:
+            observer.update(self, **kwargs)
+
+
+class Donor(ObservableModel):
     #donor_id=models.IntegerField(primary_key=True)
     user=models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True, default=1,related_name="donor_profile")
     donor_first_name=models.CharField(max_length=25,blank=False,null=False)
@@ -23,3 +43,16 @@ class Donor(models.Model):
 
     def __str__(self) :
         return self.user.email
+    
+class WelcomeEmailObserver:
+    def update(self, observable, **kwargs):
+        if isinstance(observable, Donor) and kwargs.get('created', False):
+            user = observable
+            
+            send_mail(
+                'Welcome to My Site',
+                f'Hi {user.donor_first_name},\n\nThanks for joining My Site!',
+                'lifesourcebloodbankadm@gmail.com',
+                [user.user.email],
+                fail_silently=False,
+            )
