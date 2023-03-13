@@ -1,5 +1,4 @@
-{% load static %}
-{% load widget_tweaks %}
+{% load static %} {% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63,7 +62,10 @@
 
     <!-- JS Handler file-->
     <script src="donor/js/register.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
     <style>
       .fa {
         margin-top: 5px;
@@ -87,11 +89,17 @@
         >
           <div class="container">
             <div class="row justify-content-center">
-              <div class="col-lg-5 col-md-6 d-flex flex-column align-items-center justify-content-center">
+              <div
+                class="col-lg-5 col-md-6 d-flex flex-column align-items-center justify-content-center"
+              >
                 <div class="d-flex justify-content-center py-4">
                   <h2 class="d-flex align-items-center w-auto">
                     <img src="assets/img/logo.png" alt="" />
-                    <span class="d-none d-lg-block" style="color: #012970; font-weight: bold;">LifeSource Donor Account</span>
+                    <span
+                      class="d-none d-lg-block"
+                      style="color: #012970; font-weight: bold"
+                      >LifeSource Donor Account</span
+                    >
                   </h2>
                 </div>
                 <!-- End Logo -->
@@ -112,7 +120,7 @@
                       id="login-form"
                       method="POST"
                     >
-                    {% csrf_token %}
+                      {% csrf_token %}
                       <!-- <div class="col-12">
                         <label for="yourEmail" class="form-label"
                           >Email address</label
@@ -121,27 +129,35 @@
                         <div id="invalid-email" class="hidden red"></div>
                       </div> -->
                       <div class="col-12 form-group">
-                        <label for="yourEmail" class="form-label">Email address</label> 
+                        <label for="yourEmail" class="form-label"
+                          >Email address</label
+                        >
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <div class="input-group-text">
                               <i class="fa fa-user"></i>
                             </div>
-                          </div> 
-                          {% render_field form.username class="form-control" id="Email" placeholder="Enter your email" type="email" %}
+                          </div>
+                          {% render_field form.username class="form-control"
+                          id="Email" placeholder="Enter your email" type="email"
+                          %}
                           <div id="invalid-email" class="hidden red"></div>
                         </div>
                       </div>
 
                       <div class="col-12 form-group">
-                        <label for="yourPassword" class="form-label">Password</label> 
+                        <label for="yourPassword" class="form-label"
+                          >Password</label
+                        >
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <div class="input-group-text">
                               <i class="fa fa-key"></i>
                             </div>
-                          </div> 
-                          {% render_field form.password class="form-control" type="password" placeholder="Enter your password" id="Password"%}
+                          </div>
+                          {% render_field form.password class="form-control"
+                          type="password" placeholder="Enter your password"
+                          id="Password"%}
                           <div id="invalid-password" class="hidden red"></div>
                         </div>
                       </div>
@@ -154,15 +170,27 @@
                         <div id="invalid-password" class="hidden red"></div>
                       </div> -->
 
-
                       <div class="col-4 mt-4">
-                        <a class="btn btn-success w-100" href="{% url 'index'%}"> Home </a>
+                        <a
+                          class="btn btn-success w-100"
+                          href="{% url 'index'%}"
+                        >
+                          Home
+                        </a>
                       </div>
                       <div class="col-4 mt-4">
-                        <button class="btn btn-primary w-100" type="submit" value="Login">Login</button>
-                      </div> 
+                        <button
+                          class="btn btn-primary w-100"
+                          type="submit"
+                          value="Login"
+                        >
+                          Login
+                        </button>
+                      </div>
                       <div class="col-4 mt-4">
-                        <button class="btn btn-secondary w-100" type="reset">Clear</button>
+                        <button class="btn btn-secondary w-100" type="reset">
+                          Clear
+                        </button>
                       </div>
 
                       <div class="col-12">

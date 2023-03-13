@@ -47,14 +47,13 @@
                     <tr>
                       <th scope="col">Id</th>
                       <th scope="col">Event Name</th>
-                      <th scope="col">Appointment Name</th>
-                      <th scope="col">Appointment Location</th>
                       <th scope="col">Appointment Address</th>
                       <th scope="col">Donation Type</th>
+                      <th scope="col">Postal Code</th>
                       <th scope="col">Appointment Date</th>
                       <th scope="col">Appointment Time Start</th>
                       <th scope="col">Appointment Time End</th>
-                      <th scope="col">Appointment Staus</th>
+                      <th scope="col">Appointment Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -62,9 +61,8 @@
                     <tr>
                       <th scope="row">{{d.id}}</th>
                       <td>{{d.ename}}</td>
-                      <td>{{d.apptname}}</td>
-                      <td>{{d.elocation}}</td>
                       <td>{{d.eaddress}}</td>
+                      <td>{{d.event_type}}</td>
                       <td>{{d.epscode}}</td>
                       <td>{{d.edate}}</td>
                       <td>{{d.etimest}}</td>
@@ -76,15 +74,14 @@
                           class="btn btn-outline-primary"
                           >Edit</a
                         >
-                      </td>
-                      <td>
                         <a
-                          type="button"
-                          href="/delete/{{d.id}}"
-                          class="btn btn-outline-danger"
-                          >Delete</a
-                        >
+                        type="button"
+                        href="/delete/{{d.id}}"
+                        class="btn btn-outline-danger"
+                        >Delete</a
+                      >
                       </td>
+                 
                     </tr>
                     {% endfor %}
                   </tbody>

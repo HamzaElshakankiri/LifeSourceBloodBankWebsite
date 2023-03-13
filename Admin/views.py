@@ -35,15 +35,14 @@ def admin_create_apptPage(request):
 def insertData(request):
     if request.method == "POST":
         ename = request.POST.get('ename')
-        apptname = request.POST.get('apptname')
-        elocation = request.POST.get('elocation')
         eaddress = request.POST.get('eaddress')
+        event_type = request.POST.get('event_type')
         epscode = request.POST.get('epscode')
         edate = request.POST.get('edate')
         etimest = request.POST.get('etimest')
         etimend = request.POST.get('etimend')
-        print(ename, elocation, edate, etimest, etimest)
-        query = Events(ename=ename, apptname=apptname, elocation=elocation, eaddress=eaddress,
+        print(ename, edate, etimest, etimest,event_type)
+        query = Events(ename=ename, eaddress=eaddress, event_type =event_type,
                        epscode=epscode, edate=edate, etimest=etimest, etimend=etimend)
         query.save()
         messages.info(request, "Data Inserted Successfully")
@@ -55,18 +54,16 @@ def insertData(request):
 def updateData(request, id):
     if request.method == "POST":
         ename = request.POST['ename']
-        apptname = request.POST['apptname']
-        elocation = request.POST['elocation']
         eaddress = request.POST['eaddress']
+        event_type = request.POST['event_type']
         epscode = request.POST['epscode']
         edate = request.POST.get('edate')
         etimest = request.POST.get('etimest')
         etimend = request.POST.get('etimend')
         edit = Events.objects.get(id=id)
         edit.ename = ename
-        edit.apptname = apptname
-        edit.elocation = elocation
         edit.eaddress = eaddress
+        edit.event_type = event_type
         edit.epscode = epscode
         edit.edate = edate
         edit.etimest = etimest

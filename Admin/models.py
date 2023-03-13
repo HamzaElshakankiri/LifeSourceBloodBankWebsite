@@ -12,8 +12,6 @@ class Stock(models.Model):
 
 class Events(models.Model):
     ename = models.CharField(max_length=25, blank=False, null=False)
-    apptname = models.CharField(max_length=25, blank=False, null=False)
-    elocation = models.CharField(max_length=25, blank=False, null=False)
     eaddress = models.CharField(max_length=25, blank=False, null=False)
     epscode = models.CharField(max_length=25, blank=False, null=False)
     edate = models.CharField(max_length=25, blank=False, null=False)
@@ -22,5 +20,7 @@ class Events(models.Model):
     edonor_email=models.CharField(max_length=25, default='0')
     edonor_name=models.CharField(max_length=50, default='')
     edonor_blood=models.CharField(max_length=10, default='Unknown')
+    event_type=models.CharField(max_length=25,blank=False,null=False,default='')
+
     def __str__(self):
         return self.ename

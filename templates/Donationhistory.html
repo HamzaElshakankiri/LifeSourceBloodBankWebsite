@@ -92,10 +92,9 @@
                     <tr>
                       <th scope="col">Id</th>
                       <th scope="col">Event Name</th>
-                      <th scope="col">Appointment Name</th>
-                      <th scope="col">Appointment Location</th>
                       <th scope="col">Appointment Address</th>
                       <th scope="col">Donation Type</th>
+                      <th scope="col">Postal Code</th>
                       <th scope="col">Appointment Date</th>
                       <th scope="col">Appointment Time Start</th>
                       <th scope="col">Appointment Time End</th>
@@ -108,37 +107,13 @@
                     <tr>
                       <th scope="row">{{d.id}}</th>
                       <td>{{d.ename}}</td>
-                      <td>{{d.apptname}}</td>
-                      <td>{{d.elocation}}</td>
                       <td>{{d.eaddress}}</td>
+                      <td>{{d.event_type}}</td>
                       <td>{{d.epscode}}</td>
                       <td>{{d.edate}}</td>
                       <td>{{d.etimest}}</td>
                       <td>{{d.etimend}}</td>
-                      <!--td>
-                        <a
-                          type="button"
-                          href="/donation-history/{{d.id}}/{{request.user}}"
-                          class="btn btn-outline-primary"
-                          >Book</a
-                        >
-                      </td>
-                      <td>
-                        <a
-                          type="button"
-                          href="/bookAppt/{{request.user.id}}"
-                          class="btn btn-outline-primary"
-                          >Book</a
-                        >
-                      </td-->
-                      <!--td>
-                        <a
-                          type="button"
-                          href="/delete/{{d.id}}"
-                          class="btn btn-outline-danger"
-                          >Delete</a
-                        
-                      </td-->
+ 
                     </tr>
                     {% endfor %}
                     {% endblock %}

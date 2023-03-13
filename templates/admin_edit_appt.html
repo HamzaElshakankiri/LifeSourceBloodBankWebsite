@@ -61,32 +61,8 @@
                     required
                   />
                 </div>
-                <div class="col-12">
-                  <label for="inputNanme4" class="form-label"
-                    >Appointment Name</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter the Appointment Name"
-                    name="apptname"
-                    value="{{d.apptname}}"
-
-                    required
-                  />
-                </div>
-                <div class="col-12">
-                  <label for="inputEmail4" class="form-label">Location</label>
-                  <input
-                    type="text"
-                    class="form-control mt-2"
-                    placeholder="Enter the event location"
-                    name="elocation"
-                    value="{{d.elocation}}"
-
-                    required
-                  />
-                </div>
+ 
+               
                 <div class="col-12">
                   <label for="inputEmail4" class="form-label">Address</label>
                   <input
@@ -99,6 +75,18 @@
                     required
                   />
                 </div>
+
+                <div class="col-12">
+                  <label for="inputEmail4" class="form-label"
+                  >Event Type</label
+                >
+                <select id="event_type" class="form-control" name="event_type" required>
+                  <option selected>{{d.event_type}}</option>
+                  <option value="Blood">Blood</option>
+                  <option value="Plasma">Plasma</option>
+                 
+                </select>
+              </div>
                 <div class="col-12">
                   <label for="inputEmail4" class="form-label"
                     >Postal Code</label
@@ -118,7 +106,7 @@
                     >Appointment Date</label
                   >
                   <input
-                    type="text"
+                    type="date"
                     class="form-control mt-2"
                     placeholder="Enter the Appointment Date like: YYYY-MM-DD"
                     name="edate"
