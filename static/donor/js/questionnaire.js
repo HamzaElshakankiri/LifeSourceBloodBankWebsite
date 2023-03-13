@@ -51,7 +51,7 @@ let questions = [
         question : "More sensitive medical questions will be asked in your pre-donation interview. Do you swear that your answers given are so far are 100% truthful?",
         choiceA : "Yes",
         choiceB : "No",
-        correct : "B"
+        correct : "A"
       }
       
 ];
@@ -90,8 +90,12 @@ function checkAnswer(answer){
         runningQuestion++;
         renderQuestion();
     }else{
-        // end the quiz and show the score
-        location.reload()
+      choiceA.style.display = "none"
+      choiceB.style.display = "none"
+      question.style.display = "none"
+      continueB.style.display = "block"
+      success.style.display = "block"
+      // end the quiz and show the score
     }
     }else{
         // answer is wrong

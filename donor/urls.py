@@ -18,12 +18,15 @@ urlpatterns = [
     path('questionnairefail/', views.questionnairefail_view,name='questionnairefail'),
     
     path('users-profile/<donor_email>', views.users_profile,name='users-profile'),
-
+    
     path('donor_bookappt/', views.donor_bookappt,name='donor_bookappt'),
+
+    path('donor_bookappNoQ/', views.donor_bookappNoQ,name='donor_bookappNoQ'),
 
     path('donor_currentappt/<int:e_id>/<donor_email>', views.donor_currentappt, name="donor_currentappt"),
 
     path('donor_currentappt/<donor_email>', views.donor_currentappt_specific, name="bookAppt"),
+    
 
     path('donor_delete_currentappt/<int:e_id>/<donor_email>', views.donor_delete_currentappt, name="donor_delete_currentappt"),
 ]

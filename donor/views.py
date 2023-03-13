@@ -73,6 +73,12 @@ def donor_bookappt(request):
     return render(request, 'donor_bookappt.html', context)
 
 @login_required(login_url='pages-login')
+def donor_bookappNoQ(request):
+    event = Events.objects.filter(edonor_email='0', edonor_name='').filter(edate__gte=today)
+    context = { 'event' : event}
+    return render(request, 'donor_bookappNoQ.html', context)
+
+@login_required(login_url='pages-login')
 def bookAppt(request,e_id,donor_email):
        event = Events.objects.get(id=e_id)
        event.edonor_email=donor_email
@@ -125,13 +131,15 @@ def donation_history_view(request,donor_email):
         context = { 'event' : event}
         return render(request,'Donationhistory.html',context)
      
-           
+@login_required(login_url='pages-login')           
 def questionnare_view(request):
         return render(request, 'questionnaire.html')
 
+@login_required(login_url='pages-login')
 def questionnairefail_view(request):
         return render(request,'questionnairefail.html')
 
+@login_required(login_url='pages-login')
 def users_profile_view(request):
         return render(request, 'users-profile.html')
 

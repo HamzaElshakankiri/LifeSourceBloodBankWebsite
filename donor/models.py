@@ -50,8 +50,8 @@ class WelcomeUserEmailObserver:
             user = observable
             
             send_mail(
-                'Welcome to My Site',
-                f'Hi {user.donor_first_name},\n\nThanks for joining My Site!',
+                f'Welcome to Life Source Blood Bank!',
+                f'Hi {user.donor_first_name} \nWelcome to Life Source Blood Bank! \nLife Source Blood Bank is a website made by Hamza Elshakankiri, Vishwa Gandhi, Sana Karedia, Jordan Seitz, and Marseel Yadkoo. This is a our project for CS 476, taught by Dr. Samira Sadaoui, at the University of Regina. \n\nOn our website, you can book appointments for any of the donation events available. You can also track the history of your past donations on our website. \nIf you have any questions, please contact us through our email, “LifeSourceBloodBankadm@gmail.com”. \nThank you, and we hope to improve your donation experience. \n\nSincerely, \nLife Source Blood Bank',
                 'lifesourcebloodbankadm@gmail.com',
                 [user.user.email],
                 fail_silently=False,
@@ -63,8 +63,8 @@ class NewUserJoinedObserver:
             user = observable
             admin = 'lifesourcebloodbankadm@gmail.com'
             send_mail(
-                'A new Donor has Joined our site',
-                f'A user by the name of {user.donor_first_name} has joined!',
+                'A New Donor Registered!',
+                f'Hi Admin \n {user.donor_first_name} has joined the ranks of your donors! \nSincerely, \n \nLife Source Blood Bank ',
                 'lifesourcebloodbankadm@gmail.com',
                 [admin],
                 fail_silently=False,
