@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-{% load static%} {% block content %}
+{% load static%}
+{% block content %}
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -23,7 +24,7 @@
 
     <!-- Template Main CSS File -->
     <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
-
+    
     <script
       src="https://kit.fontawesome.com/a076d05399.js"
       crossorigin="anonymous"
@@ -88,42 +89,42 @@
 
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
-      <ul class="sidebar-nav" id="sidebar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/donor_bookappt">
-            <i class="bi bi-grid"></i>
-            <span>Book an appointment</span>
-          </a>
-        </li>
+        <ul class="sidebar-nav" id="sidebar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/donor_bookappNoQ">
+              <i class="bi bi-grid"></i>
+              <span>Book an appointment</span>
+            </a>
+          </li>
+    
+          <li class="nav-item">
+            <a class="nav-link" href="/donor_currentappt/{{request.user}}">
+              <i class="bi bi-grid"></i>
+              <span>My Current Appointments</span>
+            </a>
+          </li>
+                  
+          <li class="nav-item">
+            <a class="nav-link" href="/donation-history/{{request.user}}">
+              <i class="bi bi-grid"></i>
+              <span>My Previous Appointments</span>
+            </a>
+          </li>
+                  
+          <li class="nav-item">
+            <a class="nav-link" href="/users-profile/{{request.user}}">
+              <i class="bi bi-grid"></i>
+              <span>Profile</span>
+            </a>
+          </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/donor_currentappt/{{request.user}}">
-            <i class="bi bi-grid"></i>
-            <span>My Current Appointments</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="/donation-history/{{request.user}}">
-            <i class="bi bi-grid"></i>
-            <span>My Previous Appointments</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="/users-profile/{{request.user}}">
-            <i class="bi bi-grid"></i>
-            <span>Profile</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">
-            <i class="bi bi-grid"></i>
-            <span>Go to main page</span>
-          </a>
-        </li>
-        <!--li class="nav-item">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">
+              <i class="bi bi-grid"></i>
+              <span>Go to main page</span>
+            </a>
+          </li>
+          <!--li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">
               <i class="bi bi-grid"></i>
               <span>Log Out</span>

@@ -46,12 +46,16 @@
   <body>
       <div id="container">
         <div id= "warning"> These questions are to determine your simple eligibility. More advanced questions will be asked in person during your appointment. If you are not eligible, please try again at a later date</div>
+        <div style="display: none" id= "success"> You are tentatively elgible to donate! Please hit continue to book your appointment! </div> 
           <div id="start">Start!</div>
           <div id="quiz" style="display: none">
               <div id="question"></div>
               <div id="choices">
                   <div class="choice" id="A" onclick="checkAnswer('A')"></div>
                   <div class="choice" id="B" onclick="checkAnswer('B')"></div>
+                  <a class="nav-link failbutton" href='/donor_bookappt'>
+                    <button id="continueB" style="display: none" class="green">Continue</button>
+                  </a>
               </div>
           </div>
       </div>
