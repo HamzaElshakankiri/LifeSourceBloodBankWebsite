@@ -15,13 +15,7 @@ function validateContact(contact_no) {
 	else
 		return false;
 }
-/**The number pattern matches numbers in the following formats:
 
-(416) 555-1234
-416-555-1234
-416 555 1234
-+1 416-555-1234
-1 416 555 1234 */
 
 function validateNumber(num) {
 	let numRegEx = /^[0-9]+$/;
@@ -86,53 +80,56 @@ function validatePWD(pwd) {
 	else
 		return false;
 }
+function validateAvatar(avatar) {
+
+	let avatarRegEx = /^[^\n]+.[a-zA-Z]{3,4}$/;
+
+	if (avatarRegEx.test(avatar))
+		return true;
+	else
+		return false;
+
+}
 
 
-//Signup function ....
+//Edit function ....
 
 
-function validateSignup(event) {
+function validateEdit(event) {
 
-	let tfname = document.getElementById("firstName");
-	let tlname = document.getElementById("lastName");
-	let tpc = document.getElementById("pc");
-	let tdob = document.getElementById("dob");
-	let tem = document.getElementById("yourEmail");
-	let tpwd = document.getElementById("yourPassword");
-	let tcpwd = document.getElementById("yourCpwd");
-	let tcontact_phone = document.getElementById("yourContact");
-    let theight = document.getElementById("yourHeight");
-    let tweight = document.getElementById("yourWeight");
-    let temergency_contact_name = document.getElementById("emergencyContact");
-    let temergency_contact_phone = document.getElementById("emergencyNumber");
+	let tfname = document.getElementById("donor_first_name");
+	let tlname = document.getElementById("donor_last_name");
+	let tpc = document.getElementById("donor_postal");
+	let tdob = document.getElementById("donor_birthday");
+    let tcontact_phone = document.getElementById("donor_contact_phone");
+    let theight = document.getElementById("donor_height");
+    let tweight = document.getElementById("donor_weight");
+    let temergency_contact_name = document.getElementById("emergency_contact_name");
+    let temergency_contact_phone = document.getElementById("emergency_contact_phone");
 
 
 	let formIsValid = true;
 
-   let btfname = firstNameHandler(document.getElementById("firstName")); 
+   let btfname = firstNameHandler(document.getElementById("donor_first_name")); 
    let btlname = lastNameHandler(tlname);
    let btpc = pcHandler(tpc);
    let btdob = dobHandler(tdob);
-   let btem = EmailHandler(tem);
-   let btpwd = pwdHandler(tpwd);
-   let btcpwd = cpwdHandler(tcpwd);
    let btcontact_phone = contactEVHandler(tcontact_phone);
    let btheight = heightEVHandler(theight);
    let btweight = weightEVHandler(tweight);
    let btemergency_contact_name = enameEVHandler(temergency_contact_name);
-   let btemergency_contact_phone = econtactEVHandler(temergency_contact_phone);
+   let btemergency_contact_phone = contactEVHandler(temergency_contact_phone);
 
-  
+   
 
-   if (btfname == false || btlname == false || btpc == false || btdob == false || btem == false || btpwd==false || btcpwd == false ||btcontact_phone ==false || btheight==false ||btweight==false|| btemergency_contact_name==false || btemergency_contact_phone==false) 
-   {
+   if (btfname == false || btlname == false || btpc == false || btdob == false || btcontact_phone == false || btheight == false || btweight == false ||btemergency_contact_name == false || btemergency_contact_phone == false) 
 		formIsValid = false;
 		
 		console.log("atleast one is false i see");
-	}
 
 	if (!formIsValid) {
 		event.preventDefault();
+		
 		console.log ("Something invalid")
 	} else {
 		console.log("Validation successful, sending data to the server");
@@ -178,6 +175,7 @@ function lastNameHandler(lname) {
 		lname.classList.add("class", "red")
 		document.getElementById("invalidlastName").classList.remove("hidden");
 		document.getElementById("invalidlastName").textContent= "Lastname cannot be empty !";
+		
 		return false;
 	}
 	else if (!validateUName(lname.value)) {
@@ -214,7 +212,6 @@ function pcHandler(pc) {
 		document.getElementById("invalidpc").classList.remove("hidden");
 		document.getElementById("invalidpc").textContent= "Invalid Postal Code !";
 		document.querySelector('#myBtn').disabled = true;
-		
 		return false;
 	}
 	else {
@@ -228,55 +225,6 @@ function pcHandler(pc) {
 function EmailEVHandler(event) {
 	let t = event.target;
 	return EmailHandler(t);
-}
-
-function EmailHandler(mail) {
-	
-	if(mail.value == null || mail.value ==""){
-		mail.classList.add("class", "red")
-		document.getElementById("invalidEmail").classList.remove("hidden");
-		document.getElementById("invalidEmail").textContent= "Email cannot be empty !";
-		
-		return false;
-	}
-	else if (!validateEmail(mail.value)) {
-		mail.classList.add("class", "red")
-		document.getElementById("invalidEmail").classList.remove("hidden");
-		document.getElementById("invalidEmail").textContent= "Invalid Email !";
-		document.querySelector('#myBtn').disabled = true;
-		return false;
-	}
-	else {
-		mail.classList.remove("class", "red")
-		document.getElementById("invalidEmail").classList.add("hidden");
-		document.getElementById("invalidEmail").textContent= "";
-		document.querySelector('#myBtn').disabled = false;
-		return true;
-	}
-}
-function UsernameEVHandler(event) {
-	let t = event.target;
-	return UsernameHandler(t);
-}
-
-function UsernameHandler(uname) {
-	let em = document.getElementById("yourEmail");
-
-	if (em.value !== uname.value) {
-		uname.classList.add("class", "red")
-		document.getElementById("invalidUsername").classList.remove("hidden");
-		document.getElementById("invalidUsername").textContent= "Your email and username should be the same";
-		document.querySelector('#myBtn').disabled = true;
-
-		return false;
-	}
-	else {
-		uname.classList.remove("class", "red")
-		document.getElementById("invalidUsername").classList.add("hidden");
-		document.getElementById("invalidUsername").textContent= "";
-		document.querySelector('#myBtn').disabled = false;
-		return true;
-	}
 }
 
 
@@ -308,64 +256,6 @@ function dobHandler(dob) {
 	}
 }
 
-
-
-function pwdEVHandler(event) {
-	let t = event.target;
-	return pwdHandler(t);
-}
-function pwdHandler(pwd) {
-
-	if (pwd.value == null || pwd.value == "") {
-		pwd.classList.add("class", "red")
-		document.getElementById("invalidPwd").classList.remove("hidden");
-		document.getElementById("invalidPwd").textContent= "Password cannot be empty !";
-		return false;
-	}
-	else if ( (pwd.value.length)<8) {
-		pwd.classList.add("class", "red")
-		document.getElementById("invalidPwd").classList.remove("hidden");
-		document.getElementById("invalidPwd").textContent= "Password must be atleast 8 characters long !";
-		document.querySelector('#myBtn').disabled = true;
-		return false;
-	}
-	else if(!(/^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/.test(pwd.value))){
-		pwd.classList.add("class", "red")
-		document.getElementById("invalidPwd").classList.remove("hidden");
-		document.getElementById("invalidPwd").textContent= "Invalid Password. Please follow the format !";
-		
-		document.querySelector('#myBtn').disabled = true;
-		return false;
-	}
-	else {
-		pwd.classList.remove("class", "red")
-		document.getElementById("invalidPwd").classList.add("hidden");
-		document.getElementById("invalidPwd").textContent= "";
-		document.querySelector('#myBtn').disabled = false;
-		return true;
-	}
-}
-function cpwdHandler(event) {
-	let pwd = document.getElementById("yourPassword");
-	let cpwd = event.target;
-	if (pwd.value !== cpwd.value) {
-		cpwd.classList.add("class", "red")
-		document.getElementById("invalidCpwd").classList.remove("hidden");
-		document.getElementById("invalidCpwd").textContent= "Your password and confirm password field do not match";
-		document.querySelector('#myBtn').disabled = true;
-
-		return false;
-	}
-	else {
-		cpwd.classList.remove("class", "red")
-		document.getElementById("invalidCpwd").classList.add("hidden");
-		document.getElementById("invalidCpwd").textContent= "";
-		document.querySelector('#myBtn').disabled = false;
-		return true;
-	}
-}
-
-
 function contactEVHandler(event){
 	let t = event.target;
 	return contactEVHandler(t);
@@ -381,7 +271,7 @@ function contactEVHandler(contact) {
 	else if (!validateNumber(contact.value)) {
 		contact.classList.add("class", "red")
 		document.getElementById("invalidcontact").classList.remove("hidden");
-		document.getElementById("invalidcontact").textContent= "Enter contact in this format: XXX-XXX-XXX!";
+		document.getElementById("invalidcontact").textContent= "Contact cannot have a letter character or space !";
 		document.querySelector('#myBtn').disabled = true;
 		return false;
 	}
@@ -457,7 +347,7 @@ function enameEVHandler(event){
 	let t = event.target;
 	return enameEVHandler(t);
 }
-function enameEVHandler(econtact) {
+function enameEVHandler(ename) {
 
 	if(ename.value == null || ename.value ==""){
 		ename.classList.add("class", "red")
@@ -486,7 +376,7 @@ function econtactVHandler(event){
 	let t = event.target;
 	return econtactVHandler(t);
 }
-function econtactVHandler(ename) {
+function econtactVHandler(econtact) {
 
 	if(econtact.value == null || econtact.value ==""){
 		econtact.classList.add("class", "red")
@@ -497,7 +387,7 @@ function econtactVHandler(ename) {
 	else if (!validateNumber(econtact.value)) {
 		econtact.classList.add("class", "red")
 		document.getElementById("invalidecontact").classList.remove("hidden");
-		document.getElementById("invalidecontact").textContent= "Enter contact in this format: XXX-XXX-XXX!";
+		document.getElementById("invalidecontact").textContent= "Emergency contact cannot have a letter character or space !";
 		document.querySelector('#myBtn').disabled = true;
 		return false;
 	}
@@ -515,68 +405,4 @@ function econtactVHandler(ename) {
 
 
 
-
-//login function
-
-
-function validateLogin(event){
-
-	let em = document.getElementById("Email");
-	let pwd = document.getElementById("Password");
-	let formIsValid = true;
-
-	if (em.value == null || em.value == "") {
-		em.classList.add("class", "red")
-		document.getElementById("invalid-email").classList.remove("hidden");
-		document.getElementById("invalid-email").textContent = "Email cannot be empty !";
-		formIsValid = false;
-
-	}
-	else if (!validateEmail(em.value)) {
-
-		em.classList.add("class", "red")
-		document.getElementById("invalid-email").classList.remove("hidden");
-		document.getElementById("invalid-email").textContent = "Email address wrong format! example: username@somewhere.sth";
-		formIsValid = false;
-	}
-	else {
-		em.classList.remove("class", "red")
-		document.getElementById("invalid-email").classList.add("hidden");
-		document.getElementById("invalid-email").textContent = "";
-
-	}
-
-	if (pwd.value == null || pwd.value == "") {
-		pwd.classList.add("class", "red")
-		document.getElementById("invalid-password").classList.remove("hidden");
-		document.getElementById("invalid-password").textContent= "Password cannot be empty !";
-		formIsValid = false;
-
-	}
-	else if (!validatePWD(pwd.value)) {
-
-		pwd.classList.add("class", "red")
-		document.getElementById("invalid-password").classList.remove("hidden");
-		document.getElementById("invalid-password").textContent= "Password must be atleast 8 characters or more !";
-		formIsValid = false;
-	}
-	else if (/\s/.test(pwd.value)){
-		pwd.classList.add("class", "red")
-		document.getElementById("invalid-password").classList.remove("hidden");
-		document.getElementById("invalid-password").textContent= "Password cannot contain spaces !";
-		formIsValid = false;
-	}
-	else {
-
-		pwd.classList.remove("class", "red")
-		document.getElementById("invalid-password").classList.add("hidden");
-		document.getElementById("invalid-password").textContent= "";
-	}
-
-	if (!formIsValid) {
-		event.preventDefault();
-	} else {
-		console.log("Validation successful, sending data to the server");
-	}
-}
 

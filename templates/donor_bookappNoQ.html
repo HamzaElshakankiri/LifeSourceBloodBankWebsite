@@ -93,13 +93,13 @@
                     <tr>
                       <th scope="col">Id</th>
                       <th scope="col">Event Name</th>
-                      <th scope="col">Appointment Name</th>
-                      <th scope="col">Appointment Location</th>
+                      
                       <th scope="col">Appointment Address</th>
                       <th scope="col">Donation Type</th>
                       <th scope="col">Appointment Date</th>
                       <th scope="col">Appointment Time Start</th>
                       <th scope="col">Appointment Time End</th>
+                      <th scope="col">Appointment Booking criteria</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -108,10 +108,9 @@
                     <tr>
                       <th scope="row">{{d.id}}</th>
                       <td>{{d.ename}}</td>
-                      <td>{{d.apptname}}</td>
-                      <td>{{d.elocation}}</td>
+                    
                       <td>{{d.eaddress}}</td>
-                      <td>{{d.epscode}}</td>
+                      <td>{{d.event_type}}</td>
                       <td>{{d.edate}}</td>
                       <td>{{d.etimest}}</td>
                       <td>{{d.etimend}}</td>
@@ -120,7 +119,7 @@
                           type="button"
                           href="/questionnaire"
                           class="btn btn-outline-primary"
-                          >Do the Questionnaire To Book!</a
+                          >Do the Questionnaire</a
                         >
                       </td>
                       <!--td>

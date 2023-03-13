@@ -36,9 +36,9 @@ class Donor(ObservableModel):
     donor_birthday=models.DateField(null=True)
     donor_weight=models.PositiveIntegerField(default=0)
     donor_height=models.PositiveIntegerField(default=0)
-    donor_contact_phone=models.CharField(max_length=25)
+    donor_contact_phone=models.PositiveIntegerField()
     emergency_contact_name=models.CharField(max_length=25)
-    emergency_contact_phone=models.CharField(max_length=25)
+    emergency_contact_phone=models.PositiveIntegerField()
     donor_nextdonationdate=models.DateField(auto_now=True)
 
     def __str__(self) :
