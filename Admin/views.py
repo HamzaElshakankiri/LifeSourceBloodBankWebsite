@@ -202,7 +202,7 @@ def LoginPage(request):
         username = request.POST.get('username')
         pass1 = request.POST.get('pass')
         user = authenticate(request, username=username, password=pass1)
-        if user is not None:
+        if user is not None and user.is_staff:
             login(request, user)
             return redirect('admin_dashboard')
         else:
