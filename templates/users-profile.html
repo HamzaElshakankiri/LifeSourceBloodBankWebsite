@@ -32,6 +32,9 @@
   <!-- Template Main CSS File -->
   <link rel="stylesheet" type= "text/css" href="{% static 'donor/css/style.css' %}">
 
+   <!-- JS Handler file-->
+   <script src="{% static 'donor/js/update.js' %}"></script>
+
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.5.0
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -47,8 +50,24 @@
 
     <div class="pagetitle">
       <h1>Profile</h1>
-      
     </div><!-- End Page Title -->
+
+      {% for message in messages %}
+      <!-- Table with stripped rows -->
+      <div
+      class="alert alert-{{message.tags}} alert-dismissible fade show"
+      role="alert"
+      >
+      <strong>{{message}}</strong>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+                
+    {% endfor %}
     
     <section class="section profile">
       <div class="row">
@@ -79,17 +98,11 @@
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
                 </li>
 
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
-                </li>
-
               </ul>
               <div class="tab-content pt-2">
 
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                  <!--h5 class="card-title">About</h5>
-                  <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p-->
-
+                  
                   <h5 class="card-title">Profile Details</h5>
 
                   <div class="row">
@@ -114,7 +127,7 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Birth Date</div>
-                    <div class="col-lg-9 col-md-8">{{donor.donor_birthday}}</div>
+                    <div class="col-lg-9 col-md-8">{{donor.donor_birthday|date:'Y-m-d'}}</div>
                   </div>
 
                   <div class="row">
@@ -153,47 +166,45 @@
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
-                  <!-- Profile Edit Form -->
-                  <form>
-
+                  <!------------------------- Profile Edit Form ------------------------------------------------
+                  ----------------------------------------------------------------------------------------------->
+                  <form id="edit-form"action="/updateProfile/{{user.id}}" method="post">
+                    {% csrf_token %}
                     <div class="row mb-3">
                       <label for="fName" class="col-md-4 col-lg-3 col-form-label">First Name*</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="fName" type="text" class="form-control" id="fName" value={{donor.donor_first_name}}>
-                        
+                        <input name="donor_first_name" type="text" class="form-control" id="donor_first_name" value={{donor.donor_first_name}} required>
+                        <div id="invalidfirstName" class="hidden red"></div>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="lname" class="col-md-4 col-lg-3 col-form-label">Last Name*</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="lname" type="text" class="form-control"  value={{donor.donor_last_name}}>
-                        
+                        <input name="donor_last_name" type="text" class="form-control" id="donor_last_name"  value={{donor.donor_last_name}} required>
+                        <div id="invalidlastName" class="hidden red"></div>
                       </div>
                     </div>
+
+                    
 
                     <div class="row mb-3">
                       <label for="Sex" class="col-md-4 col-lg-3 col-form-label">Sex*</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="donor_bio_sex" type="text" class="form-control" id="lname" value={{donor.donor_bio_sex}}>
-                        <!--form>
-                          <input type="radio" id="Male" name="Sex" value="Male"  checked >
-                          <label for="Male">Male</label>
-                          <input type="radio" id="Female" name="Sex" value="Female"    >
-                          <label for="Female">Female</label>
-                        </form-->
+                        <select name="donor_bio_sex" class="form-control" required>
+                          {% if donor.donor_bio_sex == "Male" %}
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                          {% else %}
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                          {% endif %}
+                        </select>
                       </div>
                     </div>
 
-
-                    <!--div class="row mb-3">
-                      <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email*</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="email" value="k.anderson@example.com" >
-                        <div id="emailInvalid"></div>
-                      </div>
-                    </div-->
-
+                    
+                    
                     <div class="row mb-3">
                       <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email*</label>
                       <div class="col-md-8 col-lg-9">
@@ -209,64 +220,162 @@
                     <div class="row mb-3">
                       <label for="BirthDate" class="col-md-4 col-lg-3 col-form-label">BirthDate (YYYY-MM-DD)*</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="BirthDate"  class="form-control" id="BirthDate" value="{{donor.donor_birthday}}">
-                        
+                        <input name="donor_birthday"  class="form-control" id="donor_birthday" value="{{donor.donor_birthday|date:'Y-m-d'}}" required>
+                        <div id="invalidDob" class="hidden red"></div>
                       </div>
                     </div>
 
+                    
                     <div class="row mb-3">
                       <label for="BloodType" class="col-md-4 col-lg-3 col-form-label">Blood Type*</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="bloodtype" type="text" class="form-control" id="" value={{donor.donor_blood_type}}>
-                        <!--form>
-                          <input type="radio" id="AP" name="bloodtype" value="A+"  checked >
-                          <label for="A+">A+</label>
-                          <input type="radio" id="AN" name="bloodtype" value="A-"    >
-                          <label for="A-">A-</label>
-                          <input type="radio" id="BP" name="bloodtype" value="B+"   >
-                          <label for="B+">B+</label>
-                          <input type="radio" id="BN" name="bloodtype" value="B-"    >
-                          <label for="B-">B-</label>
-                          <input type="radio" id="ABP" name="bloodtype" value="AB+"   >
-                          <label for="AB+">AB+</label>
-                          <input type="radio" id="ABN" name="bloodtype" value="AB-"    >
-                          <label for="AB-">AB-</label>
-                          <input type="radio" id="OP" name="bloodtype" value="O+"   >
-                          <label for="O+">O+</label>
-                          <input type="radio" id="ON" name="bloodtype" value="O-"    >
-                          <label for="O-">O-</label>
-                          <input type="radio" id="RHN" name="bloodtype" value="Unknown"   >
-                          <label for="Unknown">Unknown</label>
+                        <select name="donor_blood_type" class="form-control" required>
+                          {% if donor.donor_blood_type == "A+" %}
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>O+</option>
+                            <option>O-</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                            <option>Rh</option>
+                            <option>Unknown</option>
 
-                        </form-->
+                          {% elif donor.donor_blood_type == "A-"%}
+                            <option>A-</option>
+                            <option>A+</option>
+                            <option>O+</option>
+                            <option>O-</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                            <option>Rh</option>
+                            <option>Unknown</option>
+
+                          {% elif donor.donor_blood_type == "O+"%}
+                            <option>O+</option>
+                            <option>O-</option>
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                            <option>Rh</option>
+                            <option>Unknown</option>
+                          {% elif donor.donor_blood_type == "O-"%}
+                            <option>O-</option>
+                            <option>O+</option>
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                            <option>Rh</option>
+                            <option>Unknown</option>
+                          {% elif donor.donor_blood_type == "B+"%}
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>O-</option>
+                            <option>O+</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                            <option>Rh</option>
+                            <option>Unknown</option>
+                          {% elif donor.donor_blood_type == "B-"%}
+                            <option>B-</option>
+                            <option>B+</option>
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>O-</option>
+                            <option>O+</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                            <option>Rh</option>
+                          {% elif donor.donor_blood_type == "AB+"%}
+                            <option>AB+</option>
+                            <option>AB-</option>
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>O+</option>
+                            <option>O-</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>Rh</option>
+                            <option>Unknown</option>
+                          {% elif donor.donor_blood_type == "AB-"%}
+                            <option>AB-</option>
+                            <option>AB+</option>
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>O+</option>
+                            <option>O-</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>Rh</option>
+                            <option>Unknown</option>
+                          {% elif donor.donor_blood_type == "Rh"%}
+                            <option>Rh</option>
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>O+</option>
+                            <option>O-</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                            <option>Unknown</option>
+                          {% else %}
+                            <option>Unknown</option>
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>O-</option>
+                            <option>O+</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                            <option>Rh</option>
+              
+                          {% endif %}
+                          </select>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Address" class="col-md-4 col-lg-3 col-form-label">Postal Code*</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="address" type="text" class="form-control" id="Address" value={{donor.donor_postal}}>
+                        <input name="donor_postal" type="text" class="form-control" id="donor_postal"  value="{{donor.donor_postal}}">
+                        <div id="invalidpc" class="hidden red"></div>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Address" class="col-md-4 col-lg-3 col-form-label">Contact Phone*</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="address" type="text" class="form-control" id="Address" value={{donor.donor_contact_phone}}>
+                        <input name="donor_contact_phone" type="number" class="form-control" id="Address" value={{donor.donor_contact_phone}} required>
+                        <div id="invalidcontact" class="hidden red"></div>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Height" class="col-md-4 col-lg-3 col-form-label">Height(cm)*</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="Height" type="number" class="form-control" id="Height" value={{donor.donor_height}}>
+                        <input name="donor_height" type="number" class="form-control" id="donor_height" value={{donor.donor_height}} required>
+                        <div id="invalidheight" class="hidden red"></div>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Weight" class="col-md-4 col-lg-3 col-form-label">Weight(kg)*</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="Weight" type="number" class="form-control" id="Weight" value={{donor.donor_weight}}>
+                        <input name="donor_weight" type="number" class="form-control" id="donor_weight" value={{donor.donor_weight}} required>
+                        <div id="invalidweight" class="hidden red"></div>
                       </div>
                     </div>
 
@@ -274,59 +383,32 @@
                     <div class="row mb-3">
                       <label for="efullName" class="col-md-4 col-lg-3 col-form-label">Emergency Contact Name</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="efullName" type="text" class="form-control" id="efullName" value={{donor.emergency_contact_name}}>
-                        <div id="enameInvalid"></div>
+                        <input name="emergency_contact_name" type="text" class="form-control" id="emergency_contact_name" value={{donor.emergency_contact_name}} required>
+                        <div id="invalidename" class="hidden red"></div>
                       </div>
                     </div>
               
                     <div class="row mb-3">
                       <label for="ePhone" class="col-md-4 col-lg-3 col-form-label">Emergency Contact Phone Number</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="ePhone" type="number" class="form-control" id="ePhone" value={{donor.emergency_contact_phone}}>
-                        <div id="phoneInvalid"></div>
+                        <input name="emergency_contact_phone" type="number" class="form-control" id="emergency_contact_phone" value={{donor.emergency_contact_phone}} required>
+                        <div id="invalidecontact" class="hidden red"></div>
                       </div>
                     </div>
 
-                    <div class="text-center">
-                      <button id="submitB" type="submit" onclick="window.location.reload()"   class="btn btn-primary">Save Changes</button>
-                      <div id="subBut"> </div>
+                   
+                    <div class="col-12">
+                      <button
+                        class="btn btn-primary w-100"
+                        type="submit"
+                        id="myBtn"
+                        >
+                        Save Changes
+                      </button>
+                      
                     </div>
                   </form><!-- End Profile Edit Form -->
 
-                </div>
-                <div class="tab-pane fade pt-3" id="profile-change-password">
-
-
-                  <!-- Change Password Form -->
-                  <form>
-
-                    <div class="row mb-3">
-                      <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="password" type="password" class="form-control" id="currentPassword">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="newpassword" type="password" class="form-control" id="newPassword">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="renewpassword" type="password" class="form-control" id="renewPassword">
-                      </div>
-                    </div>
-
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Change Password</button>
-                    </div>
-                  </form><!-- End Change Password Form -->
-
-                </div>
 
               </div><!-- End Bordered Tabs -->
 
@@ -359,9 +441,11 @@
   <script src="{% static 'donor/vendor/php-email-form/validate.js' %}"></script>
   <script src="{% static 'donor/js/editprofile.js' %}"></script>
 
-  <!-- Template Main JS File 
+  <!-- Template Main JS File
   <script src="{% static 'donor/js/editprofile.js' %}"></script>
-  <script src="{% static 'donor/js/main.js' %}"></script>-->
+  <script src="{% static 'donor/js/main.js' %}"></script> -->
+  <script src="{% static 'donor/js/update_profile.js' %}"></script>
+
 </body>
 
 </html>

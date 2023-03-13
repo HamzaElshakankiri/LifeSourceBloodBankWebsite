@@ -13,6 +13,7 @@ from . import forms,models
 from .models import Donor, WelcomeUserEmailObserver, NewUserJoinedObserver
 from Admin.models import Events
 from datetime import date
+from datetime import datetime
 
 today = date.today()
 
@@ -65,6 +66,53 @@ def users_profile(request,donor_email):
                 print('No donor found')
         context = { 'user' : user, 'donor' : donor}
         return render(request, 'users-profile.html',context)
+
+@login_required(login_url='pages-login')
+def updateProfile(request, donor_id):
+        user = User.objects.filter(id=donor_id).first()
+        donor_email = user.email
+        donor = Donor.objects.filter(user_id=donor_id).first()
+        context = {}
+        print(user)
+        if request.method == "POST":
+                print("Hi")
+                donor_first_name = request.POST['donor_first_name']
+                donor_last_name = request.POST['donor_last_name']
+                donor_bio_sex = request.POST['donor_bio_sex']
+                donor_birthday = request.POST['donor_birthday']
+                donor_blood_type = request.POST['donor_blood_type']
+                donor_postal = request.POST['donor_postal']
+                donor_contact_phone = request.POST['donor_contact_phone']
+                donor_height = request.POST['donor_height']
+                donor_weight = request.POST['donor_weight']
+                emergency_contact_name = request.POST['emergency_contact_name']
+                emergency_contact_phone = request.POST['emergency_contact_phone']
+
+                donor_birthday_datetime = datetime.strptime(donor_birthday, '%Y-%m-%d')
+
+                edit = Donor.objects.filter(user_id=donor_id).first()
+                donorForm = forms.DonorForm(request.POST)
+               
+                edit.donor_first_name = donor_first_name
+                edit.donor_last_name =  donor_last_name
+                edit.donor_bio_sex = donor_bio_sex                        
+                edit.donor_birthday = donor_birthday_datetime
+                
+                edit.donor_blood_type = donor_blood_type
+                edit.donor_postal = donor_postal                        
+                edit.donor_contact_phone = donor_contact_phone
+                edit.donor_height = donor_height
+                edit.donor_weight = donor_weight
+                edit.emergency_contact_name = emergency_contact_name
+                edit.emergency_contact_phone = emergency_contact_phone
+                edit.save()
+                context = {'donor' : edit}
+        
+                messages.warning(request, "Data Updated Successfully")
+        else:
+           donor = Donor.objects.filter(user_id=donor_id).first()
+           context = {'donor' : donor}
+        return render (request,'users-profile.html',context)
 
 @login_required(login_url='pages-login')
 def donor_bookappt(request):

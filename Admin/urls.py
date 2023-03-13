@@ -1,5 +1,6 @@
 from django.urls import path
 from Admin import views
+from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     path('', views.index, name='index'),
