@@ -1,5 +1,4 @@
-{% load static %}
-{% load widget_tweaks %}
+{% load static %} {% load widget_tweaks %}
 <!DOCTYPE html>
 
 <html lang="en">
@@ -64,13 +63,6 @@
 
     <!-- JS Handler file-->
     <script src="{% static 'donor/js/register.js' %}"></script>
-
-    <!-- =======================================================
-  * Template Name: NiceAdmin - v2.5.0
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
   </head>
 
   <body>
@@ -112,81 +104,118 @@
                       id="signup-form"
                       class="row g-3 needs-validation"
                       method="POST"
-                      
                     >
                       {% csrf_token %}
 
                       <div class="col-12">
-                        <label for="yourName" class="form-label" font-weight="bold">First Name</label>
-                        {% render_field donorForm.donor_first_name|attr:'required:true' id="firstName" class="form-control"  %}
+                        <label
+                          for="yourName"
+                          class="form-label"
+                          font-weight="bold"
+                          >First Name</label
+                        >
+                        {% render_field
+                        donorForm.donor_first_name|attr:'required:true'
+                        id="firstName" class="form-control" %}
                         <div id="invalidfirstName" class="hidden red"></div>
                       </div>
 
                       <div class="col-12">
-                      <label for="yourName" class="form-label">Last Name</label>
-                      {% render_field donorForm.donor_last_name|attr:'required:true' id="lastName" class="form-control"  %}
-                      <div id="invalidlastName" class="hidden red"></div>
-                    </div>
+                        <label for="yourName" class="form-label"
+                          >Last Name</label
+                        >
+                        {% render_field
+                        donorForm.donor_last_name|attr:'required:true'
+                        id="lastName" class="form-control" %}
+                        <div id="invalidlastName" class="hidden red"></div>
+                      </div>
 
                       <div class="col-12">
                         <label for="yourName" class="form-label"
                           >Postal Code (Enter in this format: A1B 2C3 )</label
                         >
-                        {% render_field donorForm.donor_postal|attr:'required:true' id="pc" placeholder="A1B 2C3" class="form-control"    %}
+                        {% render_field
+                        donorForm.donor_postal|attr:'required:true' id="pc"
+                        placeholder="A1B 2C3" class="form-control" %}
                         <div id="invalidpc" class="hidden red"></div>
                       </div>
 
                       <div class="col-12">
                         <label for="yourEmail" class="form-label"
-                          >Email Address (This will be your username)</label>
-                     
-                        {% render_field userForm.email|attr:'required:true' id="yourEmail" class="form-control"   %}
+                          >Email Address (This will be your username)</label
+                        >
+
+                        {% render_field userForm.email|attr:'required:true'
+                        id="yourEmail" class="form-control" %}
                         <div id="invalidEmail" class="hidden red"></div>
                       </div>
 
                       <div class="col-12">
                         <label for="yourEmail" class="form-label"
-                          >Username  (This will be your email address)</label>
-                        {% render_field userForm.username|attr:'required:true' id="yourUsername" class="form-control"   %}
+                          >Username (This will be your email address)</label
+                        >
+                        {% render_field userForm.username|attr:'required:true'
+                        id="yourUsername" class="form-control" %}
                         <div id="invalidUsername" class="hidden red"></div>
                       </div>
-
-                      
 
                       <div class="col-12">
                         <label for="bioSex" class="form-label"
                           >Biological Sex</label
                         >
-                        <select name="donor_bio_sex" class="form-control" required>
-                          <option value="" disabled="disabled" selected="selected">Choose One</option>
+                        <select
+                          name="donor_bio_sex"
+                          class="form-control"
+                          required
+                        >
+                          <option
+                            value=""
+                            disabled="disabled"
+                            selected="selected"
+                          >
+                            Choose One
+                          </option>
                           <option>Male</option>
                           <option>Female</option>
                         </select>
                       </div>
-                     
+
                       <div class="col-12">
                         <label for="bloodType" class="form-label"
                           >Blood Type:
                         </label>
-                          <select name="donor_blood_type" class="form-control" required>
-                              <option value="" disabled="disabled" selected="selected">Choose One</option>
-                              <option>O+</option>
-                              <option>O-</option>
-                              <option>A+</option>
-                              <option>A-</option>
-                              <option>B+</option>
-                              <option>B-</option>
-                              <option>AB+</option>
-                              <option>AB-</option>
-                              <option>Unknown</option>
-                          </select>
+                        <select
+                          name="donor_blood_type"
+                          class="form-control"
+                          required
+                        >
+                          <option
+                            value=""
+                            disabled="disabled"
+                            selected="selected"
+                          >
+                            Choose One
+                          </option>
+                          <option>O+</option>
+                          <option>O-</option>
+                          <option>A+</option>
+                          <option>A-</option>
+                          <option>B+</option>
+                          <option>B-</option>
+                          <option>AB+</option>
+                          <option>AB-</option>
+                          <option>Unknown</option>
+                        </select>
                       </div>
 
                       <div class="col-12">
                         <label for="birthday" class="form-label">
-                          Date of Birth (YYYY-MM-DD)</label>
-                       
-                        {% render_field donorForm.donor_birthday|attr:'required:true' id="dob" placeholder="YYYY-MM-DD" class="form-control"   %}
+                          Date of Birth (YYYY-MM-DD)</label
+                        >
+
+                        {% render_field
+                        donorForm.donor_birthday|attr:'required:true' id="dob"
+                        placeholder="YYYY-MM-DD" class="form-control" %}
                         <div id="invalidDob" class="hidden red"></div>
                       </div>
 
@@ -195,8 +224,9 @@
                           >Height</label
                         >
                         <div class="input-group has-validation">
-                        
-                          {% render_field donorForm.donor_height|attr:'required:true' id="yourHeight" class="form-control"   %}
+                          {% render_field
+                          donorForm.donor_height|attr:'required:true'
+                          id="yourHeight" class="form-control" %}
                           <span class="input-group-text" id="inputGroupPrepend"
                             >cm</span
                           >
@@ -209,8 +239,9 @@
                           >Weight</label
                         >
                         <div class="input-group has-validation">
-                        
-                          {% render_field donorForm.donor_weight|attr:'required:true' id="yourWeight" class="form-control"   %}
+                          {% render_field
+                          donorForm.donor_weight|attr:'required:true'
+                          id="yourWeight" class="form-control" %}
                           <span class="input-group-text" id="inputGroupPrepend"
                             >kg</span
                           >
@@ -220,9 +251,12 @@
 
                       <div class="col-12">
                         <label for="yourPassword" class="form-label"
-                          >Password</label>
-                    
-                        {% render_field userForm.password|attr:'required:true' id="yourPassword" class="form-control" type='password' %}
+                          >Password</label
+                        >
+
+                        {% render_field userForm.password|attr:'required:true'
+                        id="yourPassword" class="form-control" type='password'
+                        %}
 
                         <div id="invalidPwd" class="hidden red"></div>
                         <ul>
@@ -248,28 +282,37 @@
 
                       <div class="col-12">
                         <label for="yourContact" class="form-label"
-                          >Contact Number </label
-                        >
-                       
-                        {% render_field donorForm.donor_contact_phone|attr:'required:true' id="yourContact"  placeholder="XXXXXXXXXX"  class="form-control"   %}
+                          >Contact Number
+                        </label>
+
+                        {% render_field
+                        donorForm.donor_contact_phone|attr:'required:true'
+                        id="yourContact" placeholder="XXXXXXXXXX"
+                        class="form-control" %}
                         <div id="invalidcontact" class="hidden red"></div>
                       </div>
 
                       <div class="col-12">
                         <label for="emergencyContact" class="form-label"
-                          >Emergency Contact Name</label>
-                        {% render_field donorForm.emergency_contact_name|attr:'required:true' id="emergencyContact" class="form-control"   %}
+                          >Emergency Contact Name</label
+                        >
+                        {% render_field
+                        donorForm.emergency_contact_name|attr:'required:true'
+                        id="emergencyContact" class="form-control" %}
                         <div id="invalidename" class="hidden red"></div>
                       </div>
 
                       <div class="col-12">
                         <label for="emergencyContact" class="form-label"
-                          >Emergency Contact Number </label>
-                        {% render_field donorForm.emergency_contact_phone|attr:'required:true' id="emergencyNumber" placeholder="XXXXXXXXXX" class="form-control"   %}
+                          >Emergency Contact Number
+                        </label>
+                        {% render_field
+                        donorForm.emergency_contact_phone|attr:'required:true'
+                        id="emergencyNumber" placeholder="XXXXXXXXXX"
+                        class="form-control" %}
                         <div id="invalidecontact" class="hidden red"></div>
                       </div>
 
-                   
                       <div class="col-12">
                         <input
                           class="btn btn-primary w-100"
@@ -281,20 +324,12 @@
                       <div class="col-12">
                         <p class="small mb-0">
                           Already have an account?
-                          <a href="pages-login.html">Log in</a>
+                          <a href="{% url 'pages-login' %}">Log in</a>
                         </p>
                       </div>
                     </form>
                   </div>
                 </div>
-
-                <!--<div class="credits">
-                 All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-              </div> -->
               </div>
             </div>
           </div>
