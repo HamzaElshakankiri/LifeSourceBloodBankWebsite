@@ -1283,31 +1283,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-#emailInvalid
+#makeBlue
 {
-  color: red;
-}
-#fnameInvalid
-{
-  color: red;
-}
-#lnameInvalid
-{
-  color: red;
-}
-#DOBInvalid
-{
-  color: red;
-}
-#enameInvalid
-{
-  color: red;
-}
-#subBut
-{
-  color: red;
-}
-#phoneInvalid
-{
-  color: red;
+  color:  #012970;
 }
