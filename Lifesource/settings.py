@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -72,6 +73,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Lifesource.wsgi.application'
 
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
