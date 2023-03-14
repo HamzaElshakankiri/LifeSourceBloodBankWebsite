@@ -24,6 +24,7 @@
 
     <!-- Template Main CSS File -->
     <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     
     <script
       src="https://kit.fontawesome.com/a076d05399.js"
@@ -92,35 +93,35 @@
         <ul class="sidebar-nav" id="sidebar-nav">
           <li class="nav-item">
             <a class="nav-link" href="/donor_bookappNoQ">
-              <i class="bi bi-grid"></i>
+              <i class="fa fa-th-list"></i>
               <span>Book an appointment</span>
             </a>
           </li>
     
           <li class="nav-item">
             <a class="nav-link" href="/donor_currentappt/{{request.user}}">
-              <i class="bi bi-grid"></i>
+              <i class="fas fa-calendar-check"></i>
               <span>My Current Appointments</span>
             </a>
           </li>
                   
           <li class="nav-item">
             <a class="nav-link" href="/donation-history/{{request.user}}">
-              <i class="bi bi-grid"></i>
+              <i class="fas fa-history"></i>
               <span>My Previous Appointments</span>
             </a>
           </li>
                   
           <li class="nav-item">
             <a class="nav-link" href="/users-profile/{{request.user}}">
-              <i class="bi bi-grid"></i>
+              <i class="fa fa-user"></i>
               <span>Profile</span>
             </a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href="/ ">
-              <i class="bi bi-grid"></i>
+              <i class="fa fa-share"></i>
               <span>Go to main page</span>
             </a>
           </li>
