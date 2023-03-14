@@ -8,6 +8,10 @@ from .import forms, models
 from .models import Stock
 from donor.models import Donor
 from django.db.models import Sum, Q 
+from datetime import date
+from datetime import datetime
+
+today = date.today()
 
 def index(request):
     return render(request, 'index.html')
@@ -150,10 +154,7 @@ def AdminDash(request):
 
 @login_required(login_url='admin-login')
 def AdminDonation(request):
-    event = Events.objects.all()
-    # data = Events.objects.all()
-    # print(data)
-    # context = {"data": data}
+    event = Events.objects.filter(edate__lt=today)
     context = {"event": event}
     return render(request, 'admin_donation.html', context)
 
