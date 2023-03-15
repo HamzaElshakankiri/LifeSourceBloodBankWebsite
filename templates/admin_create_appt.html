@@ -1,47 +1,44 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
-    <!-- Template Main CSS File -->
-    <link href="static/assets/css/style.css" rel="stylesheet" />
-    <link href="static/assets/img/logo.png" rel="icon" />
-
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">   
+    <!--  CSS and Image File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/img/logo.png' %}" rel="icon" />
   </head>
-
   <body>
-    {% include "navbar.html" %}
+   {% include "navbar.html" %}
     <main id="main" class="main">
       <div class="pagetitle">
         <h1>Appointments</h1>
       </div>
-      <!-- End Page Title -->
-
       <section class="section">
         <div class="row">
           <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Event Details</h5>
-                <div class="text-center">
-             
-                          <a class="btn btn-success" href="{% url 'admin_submit_data' %}">
-                        Add new Appointment  </a>
+                 <h5 class="card-title">Event Details</h5>
+                  <div class="text-center">
+                    <a class="btn btn-success" href="{% url 'admin_submit_data' %}">
+                       Add new Appointment 
+                    </a>
+                    <br> <br>
                 {% for message in messages %}
                 <!-- Table with stripped rows -->
-                <div
-                  class="alert alert-{{message.tags}} alert-dismissible fade show"
-                  role="alert"
-                >
-                  <strong>{{message}}</strong>
+                <div class="alert alert-{{message.tags}} alert-dismissible fade show"
+                     role="alert">
+                     <strong>{{message}}</strong>
                   <button
                     type="button"
                     class="btn-close"
                     data-bs-dismiss="alert"
                     aria-label="Close"
                   ></button>
-                </div>
-                
+                </div>                
                 {% endfor %}
+                <!-- Appointment lists -->
                 <table class="table table-borderless datatable">
                   <thead>
                     <tr>
@@ -57,6 +54,7 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <!-- Printing data from Appointment creation-->
                     {% for d in data %}
                     <tr>
                       <th scope="row">{{d.id}}</th>
@@ -67,21 +65,19 @@
                       <td>{{d.edate}}</td>
                       <td>{{d.etimest}}</td>
                       <td>{{d.etimend}}</td>
+                      <!-- Edit or delete Appointment -->
                       <td>
                         <a
                           type="button"
                           href="/updateData/{{d.id}}"
                           class="btn btn-outline-primary"
-                          >Edit</a
-                        >
+                          >Edit</a>
                         <a
                         type="button"
                         href="/delete/{{d.id}}"
                         class="btn btn-outline-danger"
-                        >Delete</a
-                      >
-                      </td>
-                 
+                        >Delete</a>
+                      </td>  
                     </tr>
                     {% endfor %}
                   </tbody>

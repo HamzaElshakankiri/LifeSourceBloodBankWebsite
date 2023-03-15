@@ -4,29 +4,16 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-
     <title>Life Source Blood Bank</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
-
     <!-- Favicons -->
-    <link href="static/assets/img/logo.png" rel="icon" />
-     
- 
- 
+    <link href="{% static 'assets/img/logo.png' %}" rel="icon" />
      <link
-      href="static/assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-  
-
-    <!-- Template Main CSS File -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/style.css' %}"
-    />   
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>    
+      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <!-- CSS and Image File -->
+    <link href="{% static 'assets/css/style.css' %}"   rel="stylesheet" type="text/css"/>   
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' />    
     <style>
       .fa {
         margin-top: 5px;
@@ -34,28 +21,20 @@
       }
     </style>
   </head>
-
   <body>
-  
- 
       <main>
         <div class="container">
-          <section
-            class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4"
-          >
+          <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
             <div class="container">
               <div class="row justify-content-center">
-                <div
-                  class="col-lg-5 col-md-6 d-flex flex-column align-items-center justify-content-center"
-                >
-                <div class="d-flex justify-content-center py-4">
-                  <h2 class="d-flex align-items-center w-auto">
+                <div class="col-lg-5 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                  <div class="d-flex justify-content-center py-4">
+                    <h2 class="d-flex align-items-center w-auto">
                     <img src="assets/img/logo.png" alt="" />
                     <span class="d-none d-lg-block" style="color: #D81B60;  font-weight: bold; font-family:Nunito, sans-serif;">LifeSource Admin Account</span>
-                  </h2>
-                </div>
-                  <!-- End Logo -->
-  
+                    </h2>
+                  </div>
+                  <!-- End top title -->  
                   <div class="card mb-3">
                     <div class="card-body">
                       <div class="pt-2 pb-2">
@@ -66,9 +45,9 @@
                           Enter your Username & Password to login
                         </p>
                       </div>
-  
+                      <!-- Form for Login -->
                       <form action="" method="post"  class="row g-3 needs-validation" novalidate>
-                         {% csrf_token %}
+                        {% csrf_token %}
                         <div class="col-12 form-group">
                           <label for="yourUsername" class="form-label">Username</label> 
                           <div class="input-group">
@@ -92,7 +71,8 @@
                             <input class="form-control" type="password" placeholder="Enter your password" id="password" name="pass" required/>
                           </div>
                         </div>
-
+                        
+                        <!-- Buttons for submit, reset and navigate to homepage -->
                         <div class="col-4 mt-4 mb-2">
                           <a class="btn btn-success w-100" href="{% url 'index'%}"> Home </a>
                         </div>
@@ -112,16 +92,5 @@
           </section>
         </div>
       </main>
-      <!-- End #main -->
-
-      <!-- Vendor JS Files -->
-      <script src="static/assets/vendor/apexcharts/apexcharts.min.js"></script>
-      <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <script src="static/assets/vendor/chart.js/chart.umd.js"></script>
-      <script src="static/assets/vendor/echarts/echarts.min.js"></script>
-      <script src="static/assets/vendor/quill/quill.min.js"></script>
-      <script src="static/assets/vendor/simple-datatables/simple-datatables.js"></script>
-      <script src="static/assets/vendor/tinymce/tinymce.min.js"></script>
-      <script src="static/assets/vendor/php-email-form/validate.js"></script>
     </body>
 </html>
