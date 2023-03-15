@@ -1,19 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>LifeSource</title>
+    <!-- Icons for the page -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
-    <!-- Template Main CSS File -->
-    <link href="static/assets/css/style.css" rel="stylesheet" />
-    <link href="static/assets/img/logo.png" rel="icon" />
-
+    <!-- CSS and Image File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/img/logo.png' %}" rel="icon" />
   </head>
   <body>
     {% include "navbar.html" %}
-    <main id="main" class="main">
-        <!-- End Page Title -->
+  <main id="main" class="main">
   <section class="section dashboard">
   <br>
+  <!-- Display blood stock for each blood type-->
   <div class="container">
     <div class="pagetitle">
       <h1>Blood Stock</h1>
@@ -32,80 +33,79 @@
         </div>
       </div>
       <div class="col-sm-3">
-          <div class="card bg-light">
-              <div class="card-body">
-                  <div class="blood mt-3">
-                      <h2 style="font-weight: bold; color:#23395d">B+ <i class="fas fa-tint" style="color: red"></i></h2>
-                  </div><br><br>
-                  <div style="font-size: 18px; font-weight: bold; color:#444444">
-                    {{b.unit}}
-                  </div>                            
-              </div>
-            </div>
-      </div>
-      <div class="col-sm-3">
-          <div class="card bg-light">
-              <div class="card-body">
-                  <div class="blood mt-3">
-                      <h2 style="font-weight: bold; color:#23395d">O+ <i class="fas fa-tint" style="color: red"></i></h2>
-                  </div><br><br>
-                  <div style="font-size: 18px; font-weight: bold; color:#444444">
-                    {{o.unit}}
-                  </div>                            
-              </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card bg-light">
-              <div class="card-body">
-                  <div class="blood mt-3">
-                      <h2 style="font-weight: bold; color:#23395d">AB+ <i class="fas fa-tint" style="color: red"></i></h2>
-                  </div><br><br>
-                  <div style="font-size: 18px; font-weight: bold; color:#444444">
-                    {{ab.unit}}
-                  </div>                            
-              </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-3">
         <div class="card bg-light">
-          <div class="card-body">
-              <div class="blood mt-3">
-                  <h2 style="font-weight: bold; color:#23395d">A- <i class="fas fa-tint" style="color: red"></i></h2>
-              </div><br><br>
-              <div style="font-size: 18px; font-weight: bold; color:#444444">
-                {{a1.unit}}
-              </div>                            
+          <div class="card-body"> 
+            <div class="blood mt-3">
+              <h2 style="font-weight: bold; color:#23395d">B+ <i class="fas fa-tint" style="color: red"></i></h2>
+            </div><br><br>
+            <div style="font-size: 18px; font-weight: bold; color:#444444">
+                {{b.unit}}
+            </div>                            
           </div>
         </div>
       </div>
       <div class="col-sm-3">
-          <div class="card bg-light">
-              <div class="card-body">
-                  <div class="blood mt-3">
-                      <h2 style="font-weight: bold; color:#23395d">B- <i class="fas fa-tint" style="color: red"></i></h2>
-                  </div><br><br>
-                  <div style="font-size: 18px; font-weight: bold; color:#444444">
-                    {{b1.unit}}
-                  </div>                            
-              </div>
-            </div>
+        <div class="card bg-light">
+          <div class="card-body">
+            <div class="blood mt-3">
+                <h2 style="font-weight: bold; color:#23395d">O+ <i class="fas fa-tint" style="color: red"></i></h2>
+            </div><br><br>
+            <div style="font-size: 18px; font-weight: bold; color:#444444">
+                  {{o.unit}}
+            </div>                            
+          </div>
+        </div>
       </div>
       <div class="col-sm-3">
+        <div class="card bg-light">
+          <div class="card-body">
+            <div class="blood mt-3">
+                <h2 style="font-weight: bold; color:#23395d">AB+ <i class="fas fa-tint" style="color: red"></i></h2>
+            </div><br><br>
+            <div style="font-size: 18px; font-weight: bold; color:#444444">
+                    {{ab.unit}}
+            </div>                            
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
           <div class="card bg-light">
-              <div class="card-body">
-                  <div class="blood mt-3">
-                      <h2 style="font-weight: bold; color:#23395d">O- <i class="fas fa-tint" style="color: red"></i></h2>
-                  </div><br><br>
+            <div class="card-body">
+              <div class="blood mt-3">
+                 <h2 style="font-weight: bold; color:#23395d">A- <i class="fas fa-tint" style="color: red"></i></h2>
+              </div><br><br>
+                <div style="font-size: 18px; font-weight: bold; color:#444444">
+                  {{a1.unit}}
+              </div>                            
+            </div>
+         </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="card bg-light">
+          <div class="card-body">
+            <div class="blood mt-3">
+                <h2 style="font-weight: bold; color:#23395d">B- <i class="fas fa-tint" style="color: red"></i></h2>
+            </div><br><br>
+                <div style="font-size: 18px; font-weight: bold; color:#444444">
+                    {{b1.unit}}
+            </div>                            
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="card bg-light">
+          <div class="card-body">
+            <div class="blood mt-3">
+                 <h2 style="font-weight: bold; color:#23395d">O- <i class="fas fa-tint" style="color: red"></i></h2>
+            </div><br><br>
                   <div style="font-size: 18px; font-weight: bold; color:#444444">
                     {{o1.unit}}
-                  </div>                            
-              </div>
-            </div>
+            </div>                            
+          </div>
         </div>
+      </div>
         <div class="col-sm-3">
           <div class="card bg-light">
               <div class="card-body">
@@ -120,7 +120,7 @@
         </div>
     </div>
   <hr>
-  
+  <!-- Update blood stock and reflects on dashboard-->
   <h4 class="text-center" style="color:#23395d; font-weight: 500;">Update Blood Unit</h4><br>
   <div class="xyz">
       <form class="form-inline row g-3" method="POST">
@@ -150,5 +150,5 @@
      </div>
   </section>
     {% include "footer.html" %}
-    </body>
+  </body>
 </html>

@@ -2,169 +2,132 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+   
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-
-    <title>Dashboard - LifeSource </title>
+    <title>Edit Appointment</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
-   
-    <link rel="stylesheet" type= "text/css" href="{% static 'assets/css/style.css' %}">
-    <link rel="icon"  type= "text/css" href="{% static 'assets/img/lgo.png' %}">
+    
+    <!-- CSS and Image File -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="icon" href="{% static 'assets/img/logo.png' %}">
   
-    <link
-    href=" {% static 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css ' %}"
+    <link href=" {% static 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css ' %}"
     rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-    crossorigin="anonymous"
-  />    
+    crossorigin="anonymous"/>    
    
     <!-- Vendor CSS Files -->
-    <link
-      href="{% static 'donor/vendor/bootstrap/css/bootstrap.min.css' %}"
-      rel="stylesheet"
-    />
-    <link
-      href="{% static 'donor/vendor/bootstrap-icons/bootstrap-icons.css' %}"
-      rel="stylesheet"
-    />
-  
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
- 
-
- 
-  </head>
-
+    <link rel="stylesheet" href="{% static 'donor/vendor/bootstrap/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'donor/vendor/bootstrap-icons/bootstrap-icons.css' %}"/>
+      </head>
   <body>
     {% include "navbar.html" %}
-
-
-    <section class="section">
+    <main id="main" class="main">
+     <div class="pagetitle"> 
+      <h1>Update Appointment</h1>
+     </div>
+     <section class="section">
       <div class="row justify-content-center">
-        <div class="col-lg-4"
-        >
-        <br>     <br>     <br>     <br>
+        <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Update Appointment Details</h5>
 
-              <!-- Vertical Form -->
+              <!-- Form to update appointment details -->
               <form action="/updateData/{{d.id}}" class="row g-3" method="post">
                 {% csrf_token %}
                 <div class="col-12">
                   <label for="inputNanme4" class="form-label"
-                    >Event Name</label
-                  >
+                    >Event Name</label>
                   <input
                     type="text"
                     class="form-control"
                     placeholder="Enter the Event Name"
                     name="ename"
                     value="{{d.ename}}"
-
-                    required
-                  />
-                </div>
- 
-               
+                    required />
+                </div>            
                 <div class="col-12">
-                  <label for="inputEmail4" class="form-label">Address</label>
+                  <label for="inputEmail4" class="form-label"
+                    >Address</label>
                   <input
                     type="text"
                     class="form-control mt-2"
                     placeholder="Enter the event address"
                     name="eaddress"
                     value="{{d.eaddress}}"
-
-                    required
-                  />
+                    required />
                 </div>
-
                 <div class="col-12">
                   <label for="inputEmail4" class="form-label"
-                  >Event Type</label
-                >
+                    >Event Type</label>
+                    <!-- Dropdown for selection -->
                 <select id="event_type" class="form-control" name="event_type" required>
                   <option selected>{{d.event_type}}</option>
                   <option value="Blood">Blood</option>
-                  <option value="Plasma">Plasma</option>
-                 
+                  <option value="Plasma">Plasma</option>               
                 </select>
               </div>
                 <div class="col-12">
                   <label for="inputEmail4" class="form-label"
-                    >Postal Code</label
-                  >
+                    >Postal Code</label>
                   <input
                     type="text"
                     class="form-control mt-2"
                     placeholder="Enter the event postal"
                     name="epscode"
                     value="{{d.epscode}}"
-
-                    required
-                  />
+                    required />
                 </div>
                 <div class="col-12">
                   <label for="inputEmail4" class="form-label"
-                    >Appointment Date</label
-                  >
+                    >Appointment Date</label>
                   <input
                     type="date"
                     class="form-control mt-2"
                     placeholder="Enter the Appointment Date like: YYYY-MM-DD"
                     name="edate"
                     value="{{d.edate}}"
-
-                    required
-                  />
+                    required />       
                 </div>
                 <div class="col-12">
                   <label for="inputEmail4" class="form-label"
-                    >Appointment Time Start</label
-                  >
+                    >Appointment Time Start</label>
                   <input
                     type="time"
                     class="form-control mt-2"
                     placeholder="Enter the Appointment Time Start"
                     name="etimest"
                     value="{{d.etimest}}"
-
-                    required
-                  />
+                    required />
                 </div>
                 <div class="col-12">
                   <label for="inputEmail4" class="form-label"
-                    >Appointment Time End</label
-                  >
+                    >Appointment Time End</label>
                   <input
                     type="time"
                     class="form-control mt-2"
                     placeholder="Enter the Appointment Time End"
                     name="etimend"
                     value="{{d.etimend}}"
-
-                    required
-                  />
+                    required />
                 </div>
                 <div class="text-center">
                   <button class="btn btn-success" type="submit">
                     Update
-                  </button>
-                   
+                  </button>      
                 </div>
               </form>
-              <!-- Vertical Form -->
-              <!-- End Default Table Example -->
+              <!-- End of the Form -->
             </div>
           </div>
-        </div>
-         
+        </div>       
     </section>
-    {% include "footer.html" %}
+   {% include "footer.html" %}
   </main>
- 
- 
   </body>
 </html>

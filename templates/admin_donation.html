@@ -1,63 +1,61 @@
 {% load static %}
-
 {% block content%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>LifeSource</title>
+    <!-- Icons-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
-    <!-- Template Main CSS File -->
-    <link href="static/assets/css/style.css" rel="stylesheet" />
-    <link href="static/assets/img/logo.png" rel="icon" />
-
+    <!--  CSS and Image File-->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/img/logo.png' %}" rel="icon" />
 </head>
   <body>
-    {% include "navbar.html" %}
-    <main id="main" class="main">
-        <div class="pagetitle">
-          <h1>Donation History</h1>
-        </div>
-        <!-- End Page Title -->
-         <section class="section dashboard">
-                <!-- All donations -->
-                <div class="col-12">
-                  <div class="card recent-sales overflow-auto">  
-                    <div class="card-body">
-                      <h5 class="card-title">
-                        Donation List
-                        <!-- <span>| Today</span> -->
-                      </h5>
-                      <table class="table table-borderless datatable">
-                        <thead>
-                          <tr>
-                            <th scope="col">Donor Name</th>
-                            <th scope="col">Event Type</th>
-                            <th scope="col">Event Name</th>
-                            <th scope="col">Blood Type</th>
-                            <th scope="col">Donation Date</th>
-                            <th scope="col">Donation Time</th>
-                          </tr>
-                        </thead>
-                         <tbody>
-                          {% for d in event %}
-                          <tr>
-                            <td> {{d.edonor_name}}</td>
-                            <td> {{d.event_type}}</td>
-                            <td> {{d.ename}}</td>
-                            <td> {{d.edonor_blood}} </td>
-                            <td> {{d.edate}}</td>
-                            <td> {{d.etimest}} - {{d.etimend}}</td>
-                          </tr>
-                          {% endfor %}
-                          {% endblock %}
-                         </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
+   {% include "navbar.html" %}
+  <main id="main" class="main">
+   <div class="pagetitle">
+     <h1>Donation History</h1>
+   </div>
+   <section class="section dashboard">
+    <div class="col-12">
+      <div class="card recent-sales overflow-auto">  
+        <div class="card-body">
+          <h5 class="card-title">
+            Donation List
+          </h5>
+          <!-- Donation lists -->
+          <table class="table table-borderless datatable">
+            <thead>
+              <tr>
+                <th scope="col">Donor Name</th>
+                <th scope="col">Event Type</th>
+                <th scope="col">Event Name</th>
+                <th scope="col">Blood Type</th>
+                <th scope="col">Donation Date</th>
+                <th scope="col">Donation Time</th>
+              </tr>
+            </thead>
+                <tbody>
+                  <!-- Printing data from donation history for each donor-->
+                    {% for d in event %}
+                    <tr>
+                      <td> {{d.edonor_name}}</td>
+                      <td> {{d.event_type}}</td>
+                      <td> {{d.ename}}</td>
+                      <td> {{d.edonor_blood}} </td>
+                      <td> {{d.edate}}</td>
+                      <td> {{d.etimest}} - {{d.etimend}}</td>
+                    </tr>
+                    {% endfor %}
+                    {% endblock %}
+                </tbody>
+          </table>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
-    {% include "footer.html" %}
+  {% include "footer.html" %}
   </body>
 </html>

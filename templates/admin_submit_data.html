@@ -1,74 +1,65 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
-
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>LifeSource</title>
-    <!-- Template Main CSS File -->
-    <link href="static/assets/css/style.css" rel="stylesheet" />
-    <link href="static/assets/img/logo.png" rel="icon" />
-
+    
+    <!-- CSS and Image File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+    <link href="{% static '/assets/img/logo.png' %}" rel="icon" />
   </head>
-
   <body>
     {% include "navbar.html" %}
     <main id="main" class="main">
       <div class="pagetitle">
         <h1>Create Appointment</h1>
       </div>
-      <!-- End Page Title -->
-
       <section class="section">
         <div class="row justify-content-center ">
-          <div class="col-lg-4">
+          <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Insert Student Details</h5>
-
-                <!-- Vertical Form -->
+                <h5 class="card-title">Insert Appointment Details</h5>
+               
+                <!-- Form Section to create Appointment-->
                 <form action="/insert" class="row g-3" method="post">
                   {% csrf_token %}
                   <div class="col-12">
                     <label for="inputNanme4" class="form-label"
-                      >Event Name</label
-                    >
+                      >Event Name</label>
                     <input
                       type="text"
                       class="form-control"
                       placeholder="Enter the Event Name"
                       name="ename"
-                      required
-                    />
+                      required/>
                   </div>
- 
                   <div class="col-12">
                     <label for="inputNanme4" class="form-label"
-                    >Select event type</label
-                  >
-                    <select id="event_type" class="form-control" name="event_type" required>
-                 
+                      >Select event type</label>
+                    <select id="event_type" class="form-control" name="event_type" required>     
                       <option selected></option>
                       <option value="Blood">Blood</option>
                       <option value="Plasma">Plasma</option>
                      </select>
-                  </div>
-                  
+                  </div>                 
                   <div class="col-12">
-                    <label for="inputEmail4" class="form-label">Address</label>
+                    <label for="inputEmail4" class="form-label"
+                      >Address</label>
                     <input
                       type="text"
                       class="form-control mt-2"
                       placeholder="Enter the event address"
                       name="eaddress"
-                      required
-                    />
+                      required/>
                   </div>
                   <div class="col-12">
                     <label for="inputEmail4" class="form-label"
-                      >Postal Code</label
-                    >
+                      >Postal Code</label>
                     <input
                       type="text"
                       class="form-control mt-2"
@@ -79,39 +70,33 @@
                   </div>
                   <div class="col-12">
                     <label for="inputEmail4" class="form-label"
-                      >Appointment Date</label
-                    >
+                      >Appointment Date</label>
                     <input
                       type="date"
                       class="form-control mt-2"
                       placeholder="Enter the Appointment Date like YYYY-MM--DD"
                       name="edate"
-                      required
-                    />
+                      required/>
                   </div>
                   <div class="col-12">
                     <label for="inputEmail4" class="form-label"
-                      >Appointment Time Start</label
-                    >
+                      >Appointment Time Start</label>
                     <input
                       type="time"
                       class="form-control mt-2"
                       placeholder="Enter the Appointment Time Start"
                       name="etimest"
-                      required
-                    />
+                      required/>
                   </div>
                   <div class="col-12">
                     <label for="inputEmail4" class="form-label"
-                      >Appointment Time End</label
-                    >
+                      >Appointment Time End</label>
                     <input
                       type="time"
                       class="form-control mt-2"
                       placeholder="Enter the Appointment Time End"
                       name="etimend"
-                      required
-                    />
+                      required/>
                   </div>
                   <div class="text-center">
                     <button class="btn btn-success" type="submit">
@@ -122,13 +107,12 @@
                     </button>
                   </div>
                 </form>
-                <!-- Vertical Form -->
-                <!-- End Default Table Example -->
+                <!-- End of Form -->
               </div>
             </div>
           </div>
       </section>
-      {% include "footer.html" %}
+     {% include "footer.html" %}
     </main>
   </body>
 </html>
