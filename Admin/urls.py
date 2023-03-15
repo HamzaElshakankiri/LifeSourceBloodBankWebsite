@@ -5,6 +5,7 @@ from django.contrib.auth.views import LoginView
 urlpatterns = [
     path('', views.index, name='index'),
     path('admin-login', views.LoginPage, name='admin-login'),
+    #path('admin-login',LoginView.as_view(template_name='admin-login.html') , name='admin-login'),
     path('admin_dashboard', views.AdminDash, name='admin_dashboard'),
     path('admin_donation', views.AdminDonation, name='admin_donation'),
     path('admin_blood', views.admin_blood, name='admin_blood'), 

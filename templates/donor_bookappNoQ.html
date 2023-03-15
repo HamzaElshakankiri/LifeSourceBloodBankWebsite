@@ -40,12 +40,7 @@
     <!-- Template Main CSS File -->
     <link rel="stylesheet" type= "text/css" href="{% static 'donor/css/style.css' %}">
 
-    <!-- =======================================================
-  * Template Name: LifeSource - v2.5.0
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    
   </head>
 
   <body>
@@ -56,6 +51,8 @@
 
     
   <!-- End Sidebar-->
+  <!--The below code displays list of available appointments to the logged in user and provides the user with a link to questionnaire
+  in order to book an appointment.-->
 
     <main id="main" class="main">
         <div class="pagetitle">
@@ -78,7 +75,7 @@
                   class="alert alert-{{message.tags}} alert-dismissible fade show"
                   role="alert"
                 >
-                  <!--strong>{{message}}</strong-->
+                
                   <button
                     type="button"
                     class="btn-close"
@@ -122,22 +119,7 @@
                           >Do the Questionnaire</a
                         >
                       </td>
-                      <!--td>
-                        <a
-                          type="button"
-                          href="/bookAppt/{{request.user.id}}"
-                          class="btn btn-outline-primary"
-                          >Book</a
-                        >
-                      </td-->
-                      <!--td>
-                        <a
-                          type="button"
-                          href="/delete/{{d.id}}"
-                          class="btn btn-outline-danger"
-                          >Delete</a
-                        
-                      </td-->
+                     
                     </tr>
                     {% endfor %}
                     {% endblock %}

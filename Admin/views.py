@@ -207,7 +207,7 @@ def LoginPage(request):
             login(request, user)
             return redirect('admin_dashboard')
         else:
-            return HttpResponse("Username or Password is incorrect!!!")
+            messages.error(request, 'Please enter correct username and password. Note that both fields may be case sensitive. ')
 
     return render(request, 'admin-login.html')
 

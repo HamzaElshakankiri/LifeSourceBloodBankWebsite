@@ -55,6 +55,29 @@
       type="text/css"
       href="{% static 'donor/css/style.css' %}"
     />
+    <style>
+      .messages {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 1em 0;
+        }
+
+      .messages li {
+          padding: 10px;
+          margin-bottom: 5px;
+          border-radius: 3px;
+        }
+
+      .messages.error li {
+          background-color: #f2dede;
+          color: #a94442;
+          border-color: #ebccd1;
+}
+      #error-message {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
     <!-- JS Handler file-->
     <script src="{% static 'donor/js/register.js' %}"></script>
   </head>
@@ -89,6 +112,12 @@
                       </h5>
                       <p class="text-center small">
                         Enter your personal details to create account
+                        {% if messages %}
+                            <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} id="error-message" class="{{ message.tags }}{% if message.tags == 'error' %} {% endif %}"{% endif %}>{{ message }}</li>{% endfor %}
+                          </ul>
+                          {% endif %}
                       </p>
                     </div>
                     <form
@@ -129,6 +158,7 @@
                         <label for="yourEmail" class="form-label"
                           >Username  (This will be your email address)</label>
                         {% render_field userForm.username|attr:'required:true' id="yourUsername" class="form-control"   %}
+                        
                         <div id="invalidUsername" class="hidden red"></div>
                       </div>
 

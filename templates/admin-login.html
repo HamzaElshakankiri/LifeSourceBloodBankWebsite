@@ -1,4 +1,6 @@
 {% load static %}
+
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,6 +20,10 @@
       .fa {
         margin-top: 5px;
         height: 22.5px;
+      }
+      #error-message {
+        color: red;
+        font-weight: bold;
       }
     </style>
   </head>
@@ -43,6 +49,12 @@
                         </h5>
                         <p class="text-center small">
                           Enter your Username & Password to login
+                          {% if messages %}
+                            <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} id="error-message" class="{{ message.tags }}{% if message.tags == 'error' %} {% endif %}"{% endif %}>{{ message }}</li>{% endfor %}
+                          </ul>
+                          {% endif %}
                         </p>
                       </div>
                       <!-- Form for Login -->
@@ -57,7 +69,7 @@
                               </div>
                             </div> 
                             <input class="form-control" type="text" placeholder="Enter your username" id="username" name="username" required/>
-                          </div>
+                              </div>
                         </div>
                               
                         <div class="col-12 form-group">
