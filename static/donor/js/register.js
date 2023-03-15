@@ -1,3 +1,6 @@
+/* ALL FUNCTIONS VALIDATE PART OF REGISTER */ 
+
+
 function validateUName(name) {
 	let nameRegEx = /^[a-zA-Z0-9_]+$/;
 

@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 
 # Create your models here.
 
+#Base ObserverModel
 class ObservableModel(models.Model):
     observers = []
     
@@ -22,7 +23,7 @@ class ObservableModel(models.Model):
         for observer in self.observers:
             observer.update(self, **kwargs)
 
-
+#Donor Model
 class Donor(ObservableModel):
     #donor_id=models.IntegerField(primary_key=True)
     user=models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True, default=1,related_name="donor_profile")
@@ -44,7 +45,8 @@ class Donor(ObservableModel):
 
     def __str__(self) :
         return self.user.email
-    
+
+#Observer that emails the user when account is created    
 class WelcomeUserEmailObserver:
     def update(self, observable, **kwargs):
         if isinstance(observable, Donor) and kwargs.get('created', False):
@@ -57,7 +59,7 @@ class WelcomeUserEmailObserver:
                 [user.user.email],
                 fail_silently=False,
             )
-
+#Observer that emails the ADMINs when account is created
 class NewUserJoinedObserver:
     def update(self, observable, **kwargs):
         if isinstance(observable, Donor) and kwargs.get('created', False):

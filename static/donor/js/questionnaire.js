@@ -5,7 +5,7 @@ const question = document.getElementById("question");
 const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 
-// create our questions
+// Loads the Questionnaire questions
 let questions = [
     {
         question : "Do you feel well today?",
@@ -56,8 +56,6 @@ let questions = [
       
 ];
 
-// create some variables
-
 const lastQuestion = questions.length - 1;
 let runningQuestion = 0;
 let count = 0;
@@ -74,7 +72,7 @@ function renderQuestion(){
 
 start.addEventListener("click",startQuiz);
 
-// start quiz
+// start Questionnaire
 function startQuiz(){
     start.style.display = "none";
     warning.style.display = "none"
@@ -82,7 +80,7 @@ function startQuiz(){
     quiz.style.display = "block";
 }
 
-// checkAnwer
+//Checks Answer
 
 function checkAnswer(answer){
     if( answer == questions[runningQuestion].correct){
@@ -90,16 +88,15 @@ function checkAnswer(answer){
         runningQuestion++;
         renderQuestion();
     }else{
+      //Questionnaire ends
       choiceA.style.display = "none"
       choiceB.style.display = "none"
       question.style.display = "none"
       continueB.style.display = "block"
       success.style.display = "block"
-      // end the quiz and show the score
     }
     }else{
         // answer is wrong
-        // change progress color to red
         location.assign('/questionnairefail');
         
       

@@ -1,3 +1,5 @@
+/* ALL FUNCTIONS VALIDATE PART OF EDIT PROFILE */ 
+
 function validateUName(name) {
 	let nameRegEx = /^[a-zA-Z0-9_]+$/;
 
@@ -16,7 +18,6 @@ function validateContact(contact_no) {
 		return false;
 }
 
-
 function validateNumber(num) {
 	let numRegEx = /^[0-9]+$/;
 
@@ -34,6 +35,7 @@ function validatepc(dob) {
 	else
 		return false;
 }
+
 function validateEmail(em) {
 
 	let unameRegEx = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
@@ -42,6 +44,7 @@ function validateEmail(em) {
 	else
 		return false;
 }
+
 function validateDOB(dob) {
 	let dobRegEx = /^\d{4}[-]\d{2}[-]\d{2}$/;
 
@@ -50,6 +53,7 @@ function validateDOB(dob) {
 	else
 		return false;
 }
+
 function dobEligible(b) {
 
 	var today = new Date();
@@ -73,6 +77,7 @@ function dobEligible(b) {
 	else
 		return true;
 }
+
 function validatePWD(pwd) {
 
 	if (pwd.length >= 8)
@@ -80,6 +85,7 @@ function validatePWD(pwd) {
 	else
 		return false;
 }
+
 function validateAvatar(avatar) {
 
 	let avatarRegEx = /^[^\n]+.[a-zA-Z]{3,4}$/;
@@ -91,9 +97,7 @@ function validateAvatar(avatar) {
 
 }
 
-
 //Edit function ....
-
 
 function validateEdit(event) {
 
@@ -135,6 +139,7 @@ function validateEdit(event) {
 		console.log("Validation successful, sending data to the server");
 	}
 }
+
 function firstNameEVHandler(event){
 	let t = event.target;
 	return firstNameHandler(t);
@@ -169,6 +174,7 @@ function lastNameEVHandler(event){
 	let t = event.target;
 	return lastNameHandler(t);
 }
+
 function lastNameHandler(lname) {
 
 	if(lname.value == null || lname.value ==""){
@@ -194,6 +200,7 @@ function lastNameHandler(lname) {
 		return true;
 	}
 }
+
 function pcEVHandler(event) {
 	let t = event.target;
 	return pcHandler(t);
@@ -222,16 +229,17 @@ function pcHandler(pc) {
 		return true;
 	}
 }
+
 function EmailEVHandler(event) {
 	let t = event.target;
 	return EmailHandler(t);
 }
 
-
 function dobEVHandler(event) {
 	let t = event.target;
 	return dobHandler(t);
 }
+
 function dobHandler(dob) {
 	if (!validateDOB(dob.value)) {
 		dob.classList.add("class", "red")
@@ -260,6 +268,7 @@ function contactEVHandler(event){
 	let t = event.target;
 	return contactEVHandler(t);
 }
+
 function contactEVHandler(contact) {
 
 	if(contact.value == null || contact.value ==""){
@@ -289,6 +298,7 @@ function heightEVHandler(event){
 	let t = event.target;
 	return heightEVHandler(t);
 }
+
 function heightEVHandler(h) {
 
 	if(h.value == null || h.value ==""){
@@ -318,6 +328,7 @@ function weightEVHandler(event){
 	let t = event.target;
 	return weightEVHandler(t);
 }
+
 function weightEVHandler(w) {
 
 	if(w.value == null || w.value ==""){
@@ -347,6 +358,7 @@ function enameEVHandler(event){
 	let t = event.target;
 	return enameEVHandler(t);
 }
+
 function enameEVHandler(ename) {
 
 	if(ename.value == null || ename.value ==""){
@@ -376,6 +388,7 @@ function econtactVHandler(event){
 	let t = event.target;
 	return econtactVHandler(t);
 }
+
 function econtactVHandler(econtact) {
 
 	if(econtact.value == null || econtact.value ==""){
@@ -400,9 +413,3 @@ function econtactVHandler(econtact) {
 		return true;
 	}
 }
-
-
-
-
-
-
