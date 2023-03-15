@@ -148,7 +148,7 @@
 
                       <div class="col-12">
                         <label for="yourEmail" class="form-label"
-                          >Email Address (This will be your username)</label>
+                          >Email Address</label>
 
                         {% render_field userForm.email|attr:'required:true' id="yourEmail" class="form-control"   %}
                         <div id="invalidEmail" class="hidden red"></div>
@@ -156,10 +156,14 @@
 
                       <div class="col-12">
                         <label for="yourEmail" class="form-label"
-                          >Username  (This will be your email address)</label>
+                          >Username (Use a unique username; email address can serve as username) </label>
                         {% render_field userForm.username|attr:'required:true' id="yourUsername" class="form-control"   %}
                         
                         <div id="invalidUsername" class="hidden red"></div>
+                        <!--ul>
+                          <li>Your username has to be unique.</li>
+                          <li>For simplicity, you can write your emaail address as your username</li>
+                        </ul-->
                       </div>
 
                       <div class="col-12">
