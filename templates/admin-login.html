@@ -35,10 +35,15 @@
               <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-6 d-flex flex-column align-items-center justify-content-center">
                   <div class="d-flex justify-content-center py-4">
-                    <h2 class="d-flex align-items-center w-auto">
-                    <img src="assets/img/logo.png" alt="" />
-                    <span class="d-none d-lg-block" style="color: #D81B60;  font-weight: bold; font-family:Nunito, sans-serif;">LifeSource Admin Account</span>
-                    </h2>
+                    <a
+                      href=" "
+                      class="logo d-flex align-items-center w-auto"
+                    >
+                      <img src="{% static 'assets/img/logo.png' %}" alt="" />
+                      <span class="d-none d-lg-block"
+                        >LifeSource Donor Account</span
+                      >
+                    </a>
                   </div>
                   <!-- End top title -->  
                   <div class="card mb-3">
@@ -86,13 +91,13 @@
                         
                         <!-- Buttons for submit, reset and navigate to homepage -->
                         <div class="col-4 mt-4 mb-2">
-                          <a class="btn btn-success w-100" href="{% url 'index'%}"> Home </a>
+                          <a style="background-color: #D81B60;" class="btn btn-success w-100" href="{% url 'index'%}"> Home </a>
                         </div>
                         <div class="col-4 mt-4 mb-2">
                           <button class="btn btn-primary w-100" type="submit" value="Login">Login</button>
                         </div> 
                         <div class="col-4 mt-4 mb-2">
-                          <button class="btn btn-secondary w-100" type="reset">Clear</button>
+                          <button class="btn btn-dark w-100" type="reset">Clear</button>
                         </div>
                         </div>
                       </form>
