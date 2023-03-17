@@ -263,12 +263,11 @@ function UsernameEVHandler(event) {
 }
 
 function UsernameHandler(uname) {
-	let em = document.getElementById("yourEmail");
 
-	if (em.value !== uname.value) {
+	if (uname.value == null || uname.value =="") {
 		uname.classList.add("class", "red")
 		document.getElementById("invalidUsername").classList.remove("hidden");
-		document.getElementById("invalidUsername").textContent= "Your email and username should be the same";
+		document.getElementById("invalidUsername").textContent= "Your username cannot be empty";
 		document.querySelector('#myBtn').disabled = true;
 
 		return false;

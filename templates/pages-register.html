@@ -93,10 +93,7 @@
                 class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center"
               >
                 <div class="d-flex justify-content-center py-4">
-                  <a
-                    href=" "
-                    class="logo d-flex align-items-center w-auto"
-                  >
+                  <a href="/ " class="logo d-flex align-items-center w-auto">
                     <img src="{% static 'donor/img/logo.png' %}" alt="" />
                     <span class="d-none d-lg-block"
                       >LifeSource Donor Account</span
@@ -112,12 +109,15 @@
                       </h5>
                       <p class="text-center small">
                         Enter your personal details to create account
-                        {% if messages %}
-                            <ul class="messages">
-                            {% for message in messages %}
-                            <li{% if message.tags %} id="error-message" class="{{ message.tags }}{% if message.tags == 'error' %} {% endif %}"{% endif %}>{{ message }}</li>{% endfor %}
-                          </ul>
-                          {% endif %}
+                        {% if userForm.errors %}
+                            <div class="alert alert-danger" role="alert">
+                              {% for field in userForm %}
+                                {% for error in field.errors %}
+                                  <p>{{ error }}</p>
+                                {% endfor %}
+                              {% endfor %}
+                            </div>
+                        {% endif %}
                       </p>
                     </div>
                     <form
@@ -140,8 +140,7 @@
                     </div>
                       <div class="col-12">
                         <label for="yourName" class="form-label"
-                          >Postal Code (Enter in this format: A1B 2C3 )</label
-                        >
+                          >Postal Code (Enter in this format: A1B 2C3 )</label>
                         {% render_field donorForm.donor_postal|attr:'required:true' id="pc" placeholder="A1B 2C3" class="form-control"    %}
                         <div id="invalidpc" class="hidden red"></div>
                       </div>
@@ -158,18 +157,11 @@
                         <label for="yourEmail" class="form-label"
                           >Username (Use a unique username; email address can serve as username) </label>
                         {% render_field userForm.username|attr:'required:true' id="yourUsername" class="form-control"   %}
-                        
                         <div id="invalidUsername" class="hidden red"></div>
-                        <!--ul>
-                          <li>Your username has to be unique.</li>
-                          <li>For simplicity, you can write your emaail address as your username</li>
-                        </ul-->
                       </div>
 
                       <div class="col-12">
-                        <label for="bioSex" class="form-label"
-                          >Biological Sex</label
-                        >
+                        <label for="bioSex" class="form-label">Biological Sex</label>
                         <select name="donor_bio_sex" class="form-control" required>
                           <option value="" disabled="disabled" selected="selected">Choose One</option>
                           <option>Male</option>
@@ -178,9 +170,7 @@
                       </div>
 
                       <div class="col-12">
-                        <label for="bloodType" class="form-label"
-                          >Blood Type:
-                        </label>
+                        <label for="bloodType" class="form-label">Blood Type:</label>
                           <select name="donor_blood_type" class="form-control" required>
                               <option value="" disabled="disabled" selected="selected">Choose One</option>
                               <option>O+</option>
@@ -283,14 +273,6 @@
                           type="submit"
                           id="myBtn"
                           value="Create Account"
-                        />
-                      </div>
-                      <div class="col-12">
-                        <input
-                          class="btn btn-dark w-100"
-                          type="reset"
-           
-                          value="Reset  "
                         />
                       </div>
                       <div class="col-12">
