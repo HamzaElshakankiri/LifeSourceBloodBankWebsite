@@ -38,7 +38,7 @@ let questions = [
         choiceB : "No",
         correct : "B"
       },{
-        question : "Many medications that affect your blood such as Aspirin or Warfarin can make you inelgible. Within the past 14 days, have you taken any blood medication",
+        question : "Many medications that affect your blood such as Aspirin or Warfarin can make you ineligible. Within the past 14 days, have you taken any blood medication",
         choiceA : "Yes",
         choiceB : "No",
         correct : "B"
