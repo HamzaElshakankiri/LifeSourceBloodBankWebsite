@@ -22,95 +22,43 @@ def index(request):
     return render(request, 'index.html')
 
 #Sign Up View
-def donor_signup_view(request):
-    # Load Form
-    userForm = forms.DonorUserForm()
-    donorForm = forms.DonorForm()
-    mydict = {'userForm': userForm, 'donorForm': donorForm}
-
-    if request.method == 'POST':
-        # Receive Form Info
-        userForm = forms.DonorUserForm(request.POST)
-        donorForm = forms.DonorForm(request.POST)
-        # If Forms are Valid
-        if userForm.is_valid() and donorForm.is_valid():
-            username = userForm.cleaned_data.get('username')
-            if User.objects.filter(username=username).exists():
-                userForm.add_error('username', 'This username is already taken')
-            else:
-                # Save Form
-                user = userForm.save()
-                user.set_password(user.password)
-                user.save()
-
-                donor = donorForm.save(commit=False)
-                donor.user = user
-                donor.donor_bio_sex = donorForm.cleaned_data['donor_bio_sex']
-                donor.save()
-
-                # Add User to DB
-                my_donor_group = Group.objects.get_or_create(name='DONOR')
-                my_donor_group[0].user_set.add(user)
-
-                # Email Observers
-                donor.add_observer(WelcomeUserEmailObserver())
-                donor.add_observer(NewUserJoinedObserver())
-                donor.notify_observers(created=True)
-                donor.remove_observer(WelcomeUserEmailObserver())
-                donor.remove_observer(NewUserJoinedObserver())
-                return HttpResponseRedirect(reverse('pages-login'))
-        else:
-            # Show Errors
-            mydict['userForm'] = userForm
-            mydict['donorForm'] = donorForm
-            mydict['userForm_errors'] = userForm.errors
-            mydict['donorForm_errors'] = donorForm.errors
-
-    return render(request, 'pages-register.html', context=mydict)
-
-"""def donor_signup_view(request):  
+def donor_signup_view(request):  
         #Load Form   
         userForm=forms.DonorUserForm()
         donorForm=forms.DonorForm()
         mydict={'userForm':userForm,'donorForm':donorForm}
-        
         if request.method=='POST':
                 #Receive Form Info
                 userForm=forms.DonorUserForm(request.POST)
                 donorForm=forms.DonorForm(request.POST)
                 #If Forms are Valid
                 if userForm.is_valid() and donorForm.is_valid():
-                        username = userForm.cleaned_data.get('username')
-                        if User.objects.filter(username=username).exists():
-                                print('Hi')
-                                userForm.add_error('username', 'This username is already taken')
-                        #Save Form   
-                        user=userForm.save()
-                        user.set_password(user.password)
-                        user.save()
-                        
-                        donor=donorForm.save(commit=False)
-                        donor.user=user
-                        donor.donor_bio_sex=donorForm.cleaned_data['donor_bio_sex']
-                        donor.save()
-                        
-                        #Add User to DB                     
-                        my_donor_group = Group.objects.get_or_create(name='DONOR')
-                        my_donor_group[0].user_set.add(user)
-                        
-                        #Email Observers
-                        donor.add_observer(WelcomeUserEmailObserver())
-                        donor.add_observer(NewUserJoinedObserver())
-                        donor.notify_observers(created=True)
-                        donor.remove_observer(WelcomeUserEmailObserver())
-                        donor.remove_observer(NewUserJoinedObserver())
-                        return HttpResponseRedirect(reverse('pages-login'))
+                     #Save Form   
+                     user=userForm.save()
+                     user.set_password(user.password)
+                     user.save()
+                     
+                     donor=donorForm.save(commit=False)
+                     donor.user=user
+                     donor.donor_bio_sex=donorForm.cleaned_data['donor_bio_sex']
+                     donor.save()
+                     
+                     #Add User to DB                     
+                     my_donor_group = Group.objects.get_or_create(name='DONOR')
+                     my_donor_group[0].user_set.add(user)
+                     
+                     #Email Observers
+                     donor.add_observer(WelcomeUserEmailObserver())
+                     donor.add_observer(NewUserJoinedObserver())
+                     donor.notify_observers(created=True)
+                     donor.remove_observer(WelcomeUserEmailObserver())
+                     donor.remove_observer(NewUserJoinedObserver())
+                     return HttpResponseRedirect(reverse('pages-login'))
                 else:
                         #show Errors
-                        print("hello")
                         print(userForm.errors)
                         print(donorForm.errors)
-        return render(request,'pages-register.html',context=mydict)"""
+        return render(request,'pages-register.html',context=mydict)
 
 #Users Profile
 @login_required(login_url='pages-login')

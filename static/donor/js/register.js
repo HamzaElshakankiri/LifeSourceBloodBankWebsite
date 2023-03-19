@@ -18,6 +18,13 @@ function validateContact(contact_no) {
 	else
 		return false;
 }
+/**The number pattern matches numbers in the following formats:
+
+(416) 555-1234
+416-555-1234
+416 555 1234
++1 416-555-1234
+1 416 555 1234 */
 
 function validateNumber(num) {
 	let numRegEx = /^[0-9]+$/;
@@ -256,11 +263,12 @@ function UsernameEVHandler(event) {
 }
 
 function UsernameHandler(uname) {
+	let em = document.getElementById("yourEmail");
 
-	if (uname.value == null || uname.value =="") {
+	if (em.value !== uname.value) {
 		uname.classList.add("class", "red")
 		document.getElementById("invalidUsername").classList.remove("hidden");
-		document.getElementById("invalidUsername").textContent= "Your username cannot be empty";
+		document.getElementById("invalidUsername").textContent= "Your email and username should be the same";
 		document.querySelector('#myBtn').disabled = true;
 
 		return false;

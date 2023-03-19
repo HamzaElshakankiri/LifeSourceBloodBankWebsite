@@ -104,7 +104,7 @@
                         Login to Your Account
                       </h5>
                       <p class="text-center small">
-                        Enter your Username & Password to login
+                        Enter your Email & Password to login
                         {% if form.non_field_errors %}
                         <div class="alert alert-danger">
                          {{ form.non_field_errors }}
@@ -121,15 +121,15 @@
                     {% csrf_token %}
                      
                       <div class="col-12 form-group">
-                        <label for="yourEmail" class="form-label">Username</label> 
+                        <label for="yourEmail" class="form-label">Email address</label> 
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <div class="input-group-text">
                               <i class="fa fa-user"></i>
                             </div>
                           </div> 
-                          {% render_field form.username class="form-control" id="Username" placeholder="Enter your username" type="text" %}
-                          <div id="" class="hidden red"></div>
+                          {% render_field form.username class="form-control" id="Email" placeholder="Enter your email" type="email" %}
+                          <div id="invalid-email" class="hidden red"></div>
                         </div>
                       </div>
 
