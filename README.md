@@ -71,7 +71,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-- Now enter following URL in Your Browser Installed On Your Pc
+- Now enter following URL in Your Browser Installed On Your PC
 ```bash
 http://127.0.0.1:8000/
 
