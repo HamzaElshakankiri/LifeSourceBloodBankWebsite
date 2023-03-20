@@ -29,7 +29,7 @@ Donor
 - Install Python => 3.9 from https://www.python.org/downloads/ 
 #### (Make sure to install pip as well).
 
-- Install Django on your local terminal using the follwoing command: 
+- Install Django on your local terminal using the following command: 
 
 ```bash
 pip install Django 
@@ -41,20 +41,20 @@ pip install Django
   git clone https://github.com/HamzaElshakankiri/LifeSourceBloodBankWebsite.git
   
 ```
-- Go to our reposatory path using the foolwoing command: 
+- Go to our reposatory path using the following command: 
 
 ```bash
   cd LifeSourceBloodBankWebsite
   ```
--  Create a virtual environment using the follwoing command: 
+-  Create a virtual environment using the following command: 
 ```bash
 python -m venv env
 ````
-- Install the requirments using the follwoing command: 
+- Install the requirments using the following command: 
 ```bash 
 pip install -r requirements.txt
 ```
-- Create a and admin account using using the follwoing command: 
+- Create a and admin account using using the following command: 
 
 ```bash 
 python manage.py createsuperuser
