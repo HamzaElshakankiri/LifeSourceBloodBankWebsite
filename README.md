@@ -60,7 +60,7 @@ pip install -r requirements.txt
 python manage.py createsuperuser
 ````
 
-- Run the foolwoing commands: 
+- Run the following commands: 
 
 ```bash 
 
